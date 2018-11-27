@@ -1,0 +1,152 @@
+1;Prueba 1;Prueba 1;Hola 
+2;Aplicaciones - Recepci¢n de Aplicaci¢n;Montebello - Aplicacion de {{aplicante.name_student}} {{aplicante.surname_student}};"<p>{{aplicante.name_tutor}} {{aplicante.surname_tutor}}:</p>
+<p>Hemos recibido su aplicaci&oacute;n en el sistema de admisiones de Montebello Academy, con la siguiente informaci&oacute;n:</p>
+<p>DATOS DEL ESTUDIANTE</p>
+<p>- Nombres y Apellidos: {{aplicante.name}} {{aplicante.surname_tutor}}<br />- Fecha de Nacimiento: {{aplicante.birth_date}}<br />- A&ntilde;o lectivo: {{aplicante.school_period}}<br />- Nivel: {{aplicante.applied_grade}}<br />&nbsp;</p>
+<p>DATOS DEL REPRESENTANTE</p>
+<p>- Representante:&nbsp;{{aplicante.name_tutor}} {{surname_tutor}}<br />- Tel&eacute;fono del domicilio: {{aplicante.phone_tutor}}<br />- Tel&eacute;fono celular: {{aplicante.cell_tutor}}<br /><br /></p>
+<p>En el lapso de 48 horas, un representante de Admisiones se pondr&aacute; en contacto con usted.</p>
+<p>&nbsp;</p>
+<p>Saludos cordiales,</p>
+<p>Montebello Academy</p>"
+3;Admisiones-Nueva Admision con Hermanos en el Colegio;Montebello - Confirmaci¢n Ingreso Solicitud de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}} </p>
+<p>Hemos recibido la aplicaci¢n en el sistema de Admisiones de Montebello Academy con la siguiente informaci¢n:   </br> </br></p>
+<p>Datos del Estudiante: </br> </br></p>
+<p> -Nombres: {{aplicante.name_student}} {{ aplicante.surname_student}}. </br></p>
+<p> -Fecha de Nacimiento: {{aplicante.birth_date}}. </br></p>
+<p> -Nivel que Aplica: {{aplicante.applied_grade}}. </br></p>
+<p> -Per¡odo Lectivo: {{aplicante.school_period}}. </br> </br></p>
+
+<p>Datos del Representante: </br> </br></p>
+<p> -Representante: {{aplicante.name_tutor}}{{ aplicante.surname_tutor}}. </br></p>
+<p> -Celular: {{aplicante.cell_tutor}} . </br></p>
+<p> -Mail: {{aplicante.mail_tutor}} . </br></br></p>
+
+<p>Su asistencia al Tour Institucional no es requerida debido a que tiene otros representados en el colegio.</p>
+<p> Luego de verificada la informaci&oacute;n un representante del departamento de Admisiones se comunicara con usted. </p>
+</br>
+</br>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones. </p>"
+4;Admisiones-Nueva Admision sin Hermanos en el Colegio con Fecha de Tour;Confirmaci¢n Ingreso Solicitud de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Hemos recibido la aplicaci¢n en el sistema de Admisiones de Montebello Academy con la siguiente informaci¢n:   </br> </br></p>
+<p>Datos del Estudiante: </br> </br></p>
+<p> -Nombres: {{aplicante.name_student}} {{ aplicante.surname_student}}. </br></p>
+<p> -Fecha de Nacimiento: {{aplicante.birth_date}}. </br></p>
+<p> -Nivel que Aplica: {{aplicante.applied_grade}}. </br></p>
+<p> -Per¡odo Lectivo: {{aplicante.school_period}}. </br> </br></p>
+
+<p>Datos del Representante: </br> </br></p>
+<p> -Representante: {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}. </br></p>
+<p> -Celular: {{aplicante.cell_tutor}} . </br></p>
+<p> -Mail: {{aplicante.mail_tutor}} . </br></br></p>
+
+<p>Le recordamos que la fecha de tour asignada es: 
+{% for  x in aplicante.tours_set.all %} 
+{%ifequal x.estado True%}{{x.id_typetour.date_tour}}{%endifequal%}
+{% endfor %}</p>
+<p>El tour est  dirigido a los representantes sin la presencia de los estudiantes</p>
+<p>Es importante estar  15 minutos antes de la hora asignada</p>
+<p>De no asistir al tour en la fecha asignada, comuniquese con el departamento de Admisiones para agendar otra cita al tel‚fono 6017070 ext 2. </br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+5;Admisiones-Nueva Admision sin Hermanos en el Colegio sin Fecha Tour;Montebello - Confirmaci¢n Ingreso Solicitud de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Hemos recibido la aplicaci¢n en el sistema de Admisiones de Montebello Academy con la siguiente informaci¢n:   </br> </br></p>
+<p>Datos del Estudiante: </br> </br></p>
+<p> -Nombres: {{aplicante.name_student}} {{ aplicante.surname_student}}. </br></p>
+<p> -Fecha de Nacimiento: {{aplicante.birth_date}}. </br></p>
+<p> -Nivel que Aplica: {{aplicante.applied_grade}}. </br></p>
+<p> -Per¡odo Lectivo: {{aplicante.school_period}}. </br> </br></p>
+
+<p>Datos del Representante: </br> </br></p>
+<p> -Representante: {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}. </br></p>
+<p> -Celular: {{aplicante.cell_tutor}} . </br></p>
+<p> -Mail: {{aplicante.mail_tutor}} . </br></br></p>
+
+<p>El colegio realiza un Tour a los padres de Familia o representantes para proporcionar informaci¢n importante del colegio as¡ como mostrar sus instalaciones, por lo que es requisito que usted asista al Tour para continuar con el proceso.</p>
+<p>Comun¡quese con el departamento de Admisiones para agendar una fecha de tour al tel‚fono 6017070 ext 2..</p>
+<p>El tour est  dirigido a los representantes sin la presencia de los estudiantes</p>
+<p>Es importante estar por lo menos 10 minutos antes de la hora asignada</br></br></p>
+
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+6;Admisiones-Nueva Admision cambio Fecha Tour;Montebello - Confirmaci¢n Cambio Fecha de Tour Proceso de  Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Representante de:  </br> </br></p>
+<p>Datos del Estudiante: </br> </br></p>
+<p> -Nombres: {{aplicante.name_student}} {{ aplicante.surname_student}}. </br></p>
+<p> -Fecha de Nacimiento: {{aplicante.birth_date}}. </br></p>
+<p> -Nivel que Aplica: {{aplicante.applied_grade}}. </br></p>
+<p> -Per¡odo Lectivo: {{aplicante.school_period}}. </br> </br></p>
+
+
+<p>Le recordamos que la nueva Fecha de Tour asignada es:  
+{% for  x in aplicante.tours_set.all %} 
+{%ifequal x.estado True%}{{x.id_typetour.date_tour}}{%else%}No Definida{%endifequal%}
+{% endfor %}.</p>
+<p>El tour est  dirigido a los representantes sin la pre{%ifequal x.estado True%}{{x.id_typetour.date_tour}}{%endifequal%}sencia de los estudiantes</p>
+<p>Es importante estar por lo menos 15 minutos antes de la hora asignada</p>
+<p>De no asistir al tour en la fecha asignada, comuniquese con el departamento de Admisiones para agendar otra cita al tel‚fono 6017070 ext 2. </br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+7;Admisiones-Carga de Documentos Iniciales;Montebello -  Documentaci¢n Requerida para Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></br></p>
+<p>Le informamos que para continuar con el proceso de Admisiones debe comunicarse al mail admisiones@montebelloacademy.org y solicitar el c¢digo con el cual deber  cancelar en el banco el valor asignado por Evaluaciones, una vez realizado el pago debe ingresar al siguiente <a href=""http://192.168.62.2:8000/admisiones/CargaDocumentos/{{aplicante.id_applications}}"" > link</a>   y cargar al sistema de Montebello todos los documentos que all¡ se solicita. </br> </br></p>
+<p>Verificada la documentaci¢n le informaremos la fecha de evaluaciones. </br> </br></p>
+<p>Para emitir sus comprobantes la instituci¢n requiere los datos para generar las Facturas, ingrese al siguiente  <a href=""http://192.168.62.2:8000/admisiones/CreaFactura/{{aplicante.id_applications}}"" > link</a>  y registrelos.  </br> </br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+8;Admisiones-Carga de Documentos Iniciales con Errores;Montebello -  Documentaci¢n Requerida para Proceso de Admisiones con Errores;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></br></p>
+<p>Una vez verificada la documentaci¢n, encontramos documentos con errores, ingrese al siguiente <a href=""http://192.168.62.2:8000/admisiones/CambiaDocumentos/{{aplicante.id_applications}}"" > link</a>  y vuelva a subir al sistema los documentos que all¡ se solita. </br> </br></p>
+<p>Verificada la documentaci¢n le informaremos la fecha de evaluaciones. </br> </br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+9;Admisiones-Nueva Admision cambio Fecha Tour sin Fecha;Montebello - Fecha de Tour sin Agendar - Proceso de  Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Representante de:   </br> </br></p>
+<p>Datos del Estudiante: </br> </br></p>
+<p> -Nombres: {{aplicante.name_student}} {{ aplicante.surname_student}}. </br></p>
+<p> -Fecha de Nacimiento: {{aplicante.birth_date}}. </br></p>
+<p> -Nivel que Aplica: {{aplicante.applied_grade}}. </br></p>
+<p> -Per¡odo Lectivo: {{aplicante.school_period}}. </br> </br></p>
+
+<p>Le recordamos que no tiene Fecha de Tour agendada, para continuar con el proceso de admisiones este es un requisito por lo cual debe comunicarse con el departamento de Admisiones para agendar una nueva cita al tel‚fono 6017070 ext 2. </br></br></p>
+
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+10;Admisiones-Asignaci¢n Fecha de Evaluaciones;Montebello - Asignaci¢n Fecha de Evaluaciones - Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Le informamos que las Evaluaciones del Estudiante  {{aplicante.name_student}} {{ aplicante.surname_student}} ser n el : 
+{% for  x in aplicante.test_set.all %} {%ifequal x.state True%}{{x.id_typetest.date_test}}{%endifequal%}{% endfor %}</p>
+<p>Favor Confirmar su Asistencia al correo admisiones@montebelloacademy.org o al tel‚fono 6017070 ext 2.. </br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+11;Admisiones-Asignaci¢n Nueva Fecha de Evaluaciones;Montebello - Asignaci¢n Nueva Fecha de Evaluaciones - Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Le informamos que las Nuevas Evaluaciones del Estudiante  {{aplicante.name_student}} {{ aplicante.surname_student}} ser n el : {% for  x in aplicante.test_set.all%} {%ifequal x.state True%}{{x.id_typetest.date_test}}{%endifequal%}{% endfor %}</p>
+<p>Favor Confirmar su Asistencia al correo sorayamena@montebelloacademy.org o al tel‚fono 6017070 ext 2.. </br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+12;Admisiones-Asignaci¢n Fecha de Evaluaciones Individual y Grupal;Montebello - Asignaci¢n Fecha de Evaluaciones Individual y Grupal- Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Le informamos que las Evaluaciones del Estudiante  {{aplicante.name_student}} {{ aplicante.surname_student}} ser n: </br> </p>
+<p> - Evaluaci¢n Grupal el {% for  x in aplicante.test_set.all %} {%ifequal x.state True%}{{x.id_typetest.date_test}}{%endifequal%}
+{% endfor %} puede asistir con uno de los dos padres.</br></p> 
+<p> - Evaluaci¢n Individual el {% for  x in aplicante.test_set.all %} 
+{%ifequal x.state True%}{{x.id_typetest.date_test}}{%endifequal%}
+{% endfor %} DEBE asistir con los 2 padres.</br></p>
+<p>Favor Confirmar su Asistencia al correo admisiones@montebelloacademy.org o al tel‚fono 6017070 ext 2.. </br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+13;Admisiones-Aprobaci¢n de Evaluaciones;Montebello - Informaci¢n de Resultados Evaluaciones - Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Montebello Academy le informa que el estudiante  {{aplicante.name_student}} {{ aplicante.surname_student}}, APROBO las evaluaciones.</br></p>
+<p>Para Reservar el cupo debe cancelar el valor de la matricula, comunic ndose con el departamento de Contabilidad al tel‚fono 6017070 ext 5.</br></p>
+<p>Agradecemos su inter‚s en Montebello Academy para la educaci¢n de su hijo.</br></br></p>
+
+<p>Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+14;Admisiones-No Aprobaci¢n de Evaluaciones;Montebello - Informaci¢n de Resultados Evaluaciones - Proceso de Admisiones;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></p>
+<p>Montebello Academy le informa que el estudiante  {{aplicante.name_student}} {{ aplicante.surname_student}}, NO APROBO las evaluaciones.</br></p>
+<p>Agradecemos su inter‚s en Montebello Academy para la educaci¢n de su hijo.</br></br></p>
+<p>Montebello Academy</p>
+<p>Departamento de Admisiones.</p>"
+15;Admisiones-Reserva Cupo y Matriculaci¢n;Admisiones- Reserva de Cupo y Matriculaci¢n;"<p>Estimado/a  {{aplicante.name_tutor}} {{ aplicante.surname_tutor}}  </br></br></p>
+<p>Montebello Academy le informa que el cupo para el estudiante   {{aplicante.name_student}} {{ aplicante.surname_student}} que aplico para el {{aplicante.applied_grade}}, se encuentra reservado.</br></br></p>
+<p>Para continuar con el proceso de matriculaci¢n ingrese toda la informaci¢n solicitada en el siguiente <a href=""http://192.168.62.2:8000/admisiones/FormularioEstudiantes/{{aplicante.id_applications}}"" > link</a> </br></p>
+<p>Una vez validada la informaci¢n se proceder  con la matricula.</br></br></p>
+<p>Gracias por confiar en Montebello Academy</p>
+<p>Departamento de Contabilidad y Secretaria Acad‚mica.</p>"

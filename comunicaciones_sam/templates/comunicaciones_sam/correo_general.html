@@ -1,0 +1,471 @@
+{% load extras %}
+{% load staticfiles %}
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Envío de Correos a Representantes</title>
+
+    {{ form.media }}
+
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+
+  <link href="{% static 'jquery_filer/css/jquery.filer.css' %}" type="text/css" rel="stylesheet" />
+  <link href="{% static 'jquery_filer/css/themes/jquery.filer-dragdropbox-theme.css' %}" type="text/css" rel="stylesheet" />
+
+  <!--jQuery-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="{% static 'jquery_filer/js/jquery.filer.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'jquery_filer/js/conf.js' %}"></script>
+
+
+    
+    <style>
+        .file_input{
+            display: inline-block;
+            padding: 10px 16px;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            color: #008BFF;
+            border: 1px solid #008BFF;
+            vertical-align: middle;
+            background-color: #fff;
+            margin-bottom: 10px;
+            box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+        .file_input:hover,
+        .file_input:active {
+            background: #008BFF;
+            color: #fff;
+        }
+    </style>
+
+
+
+
+
+  </head>
+
+  <body style="background:white">
+
+  <div class = "container-fluid">
+    <div class="container page-header">
+      
+          <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+            <img id = "logo-montebello" src="/static/logo.png" width="120" height="120">
+          </div>
+            
+          <div class="col-md-9 col-sm-9 col-xs-9" align="right">
+            <h1>Montebello Academy</h1>
+            <h3>Envío de Mensajes a Representantes</h3>
+            <h5>{{user.get_full_name}} - <a href="/user/logout/">Salir</a></h5>
+
+          </div>
+    </div>
+
+    <div class = "container-fluid well col-md-12" style="width:100%; float:left">
+      <form id="main_form" class="form-group" enctype="multipart/form-data" method="post" action="">
+        {%csrf_token %}
+
+      <div class="col-md-12 container">
+
+      </div>
+
+      <div class = "col-md-6 container">
+
+        <div class="page-header">
+              <h4>Detalles de la Comunicación:</h4>
+            </div>
+
+
+            <div class="row form-group">
+              <label class="col-md-4 control-label">Asunto:</label>
+              <div class="col-md-8 inputGroupContainer">
+                {{form.subject|addcss:"form-control"}}
+              </div>
+            </div>
+
+
+                  <div class="row form-group">
+                    <label for="id_adjunto" class="col-md-2 control-label">Archivos adjuntos</label>
+
+                    <div class="col-md-10 inputGroupContainer">
+
+                      <!--<a class="file_input" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif, pdf, docx, doc"><i class="icon-jfi-paperclip"></i> Adjuntar archivos</a>-->
+                      <a class="file_input" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif, pdf, docx, doc" style="border:0; padding:0;"><button type="button" class="btn btn-success" formnovalidate>Adjuntar <span class="glyphicon glyphicon glyphicon-paperclip"></span></button></a>
+                    </div>
+
+                  </div>
+<!--
+          <div class="row form-group">
+            <label for="id_adjunto" class="col-md-4 control-label">Archivos adjuntos</label>
+
+
+            <a class="file_input" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif, pdf, docx, doc"><i class="icon-jfi-paperclip"></i> Adjuntar archivos</a>
+
+
+          </div>      -->   
+
+          <!--
+            <div class="row form-group">
+              <label class="col-md-4 control-label">Adjuntar archivo:</label>
+            <div class="col-md-8 inputGroupContainer">{{form2.attachment}}</div>
+          </div>
+          -->
+
+
+          <div class = "row form-group">
+            <label class="col-md-12 control-label">Mensaje:</label>
+            <div class="col-md-12 inputGroupContainer">
+
+
+                    {{form.html}}
+
+                    </div>
+
+
+            {{comunicacion.html | safe}}
+          </div>
+          <div class="row form-group" style="text-align:center">
+            <input class="btn btn-success" id = "boton-montebello" type = "submit" value="Enviar Comunicación">
+
+          </div>
+
+
+      </div>
+
+
+      <div class="col-md-6 container">
+        <div class="page-header">
+          <h4>Representantes que recibirán el mensaje</h4>
+
+        </div>
+        
+        <div class = "col-md-12 panel-group" id = "main_accordion">
+          <div id ="grupo_preescolar" class="panel-group panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <input type="checkbox" id="id_preescolar"><a data-toggle="collapse" data-parent = "#main_accordion" href="#accordion"><small class="panel-title"> Prescolar</small></a>
+              </h4>
+            </div>
+
+            <div class="panel panel-collapse collapse" id="accordion">
+
+              {% for clase in clases %}
+              {% if "Inicial" in clase.nivel.nombre or "inder" in clase.nivel.nombre%}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <input type="checkbox" id="id_{{clase.pk}}"><a data-toggle="collapse" data-parent = "#accordion" href="#collapse{{clase.pk}}"><small class="panel-title"> {{clase.nivel|title}} {{clase.paralelo|title}}</small></a>
+                    </h4>
+                  </div>
+
+
+
+                    <div id="collapse{{clase.pk}}" class="panel-collapse collapse">
+                      <ul class="list-group">
+
+                        {% for estudiante in clase.matricula_set.all|dictsort:"estudiante.user.father_last_name"%}
+
+                          {% if estudiante.estado_matricula_set.last.matricula_activa is True %}
+                          <li class="list-group-item"><label style="cursor:pointer"><input type="checkbox" id = "id_stud_{{estudiante.pk}}" name="estudiante[]" value = "{{estudiante.pk}}" {% if estudiante.estudiante.student_relative_set.all|length is 0 %} disabled{% endif %}> {{estudiante.estudiante.get_name|title}}</label></li>
+                          {% endif %}
+
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+
+
+          <div id ="grupo_elementary" class="panel-group panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <input type="checkbox" id="id_elementary"><a data-toggle="collapse" data-parent = "#main_accordion" href="#accordion1"><small class="panel-title"> Elementary</small></a>
+              </h4>
+            </div>
+
+            <div class="panel panel-collapse collapse" id="accordion1">
+
+              {% for clase in clases %}
+              {% if "Elementary" in clase.nivel.nombre %}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <input type="checkbox" id="id_{{clase.pk}}"><a data-toggle="collapse" data-parent = "#accordion1" href="#collapse{{clase.pk}}"><small class="panel-title"> {{clase.nivel|title}} {{clase.paralelo|title}}</small></a>
+                    </h4>
+                  </div>
+
+
+
+                    <div id="collapse{{clase.pk}}" class="panel-collapse collapse">
+                      <ul class="list-group">
+
+                        {% for estudiante in clase.matricula_set.all|dictsort:"estudiante.user.father_last_name"%}
+
+                          {% if estudiante.estado_matricula_set.last.matricula_activa is True %}
+                          <li class="list-group-item"><label style="cursor:pointer"><input type="checkbox" id = "id_stud_{{estudiante.pk}}" name="estudiante[]" value = "{{estudiante.pk}}" {% if estudiante.estudiante.student_relative_set.all|length is 0 %} disabled{% endif %}> {{estudiante.estudiante.get_name|title}}</label></li>
+                          {% endif %}
+
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>          
+          
+
+          <div id ="grupo_middle" class="panel-group panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <input type="checkbox" id="id_middle"><a data-toggle="collapse" data-parent = "#main_accordion" href="#accordion2"><small class="panel-title"> Middle</small></a>
+              </h4>
+            </div>
+
+            <div class="panel panel-collapse collapse" id="accordion2">
+
+              {% for clase in clases %}
+              {% if "Middle" in clase.nivel.nombre %}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <input type="checkbox" id="id_{{clase.pk}}"><a data-toggle="collapse" data-parent = "#accordion2" href="#collapse{{clase.pk}}"><small class="panel-title"> {{clase.nivel|title}} {{clase.paralelo|title}}</small></a>
+                    </h4>
+                  </div>
+
+
+
+                    <div id="collapse{{clase.pk}}" class="panel-collapse collapse">
+                      <ul class="list-group">
+
+                        {% for estudiante in clase.matricula_set.all|dictsort:"estudiante.user.father_last_name"%}
+
+                          {% if estudiante.estado_matricula_set.last.matricula_activa is True %}
+                          <li class="list-group-item"><label style="cursor:pointer"><input type="checkbox" id = "id_stud_{{estudiante.pk}}" name="estudiante[]" value = "{{estudiante.pk}}" {% if estudiante.estudiante.student_relative_set.all|length is 0 %} disabled{% endif %}> {{estudiante.estudiante.get_name|title}}</label></li>
+                          {% endif %}
+
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div> 
+
+          <div id ="grupo_preparatory" class="panel-group panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <input type="checkbox" id="id_preparatory"><a data-toggle="collapse" data-parent = "#main_accordion" href="#accordion3"><small class="panel-title"> Preparatory</small></a>
+              </h4>
+            </div>
+
+            <div class="panel panel-collapse collapse" id="accordion3">
+
+              {% for clase in clases %}
+              {% if "Preparatory" in clase.nivel.nombre %}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <input type="checkbox" id="id_{{clase.pk}}"><a data-toggle="collapse" data-parent = "#accordion3" href="#collapse{{clase.pk}}"><small class="panel-title"> {{clase.nivel|title}} {{clase.paralelo|title}}</small></a>
+                    </h4>
+                  </div>
+
+
+
+                    <div id="collapse{{clase.pk}}" class="panel-collapse collapse">
+                      <ul class="list-group">
+
+                        {% for estudiante in clase.matricula_set.all|dictsort:"estudiante.user.father_last_name"%}
+
+                          {% if estudiante.estado_matricula_set.last.matricula_activa is True %}
+                          <li class="list-group-item"><label style="cursor:pointer"><input type="checkbox" id = "id_stud_{{estudiante.pk}}" name="estudiante[]" value = "{{estudiante.pk}}" {% if estudiante.estudiante.student_relative_set.all|length is 0 %} disabled{% endif %}> {{estudiante.estudiante.get_name|title}}</label></li>
+                          {% endif %}
+
+                        {% endfor %}
+                      </ul>
+                    </div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      </form>
+    </div>
+  </div>
+
+
+
+
+    <script type ="text/javascript">
+
+
+
+      $(document).load(function(){
+        $("#id_html_tbl").css("width", "100%");
+
+      });
+
+
+
+      $(document).ready(function(){
+
+
+        //$( "form" ).submit(function( event ) {
+        //  alert( "Handler for .submit() called." );
+        //  event.preventDefault();
+        //});
+
+
+        $("form").submit(function(event){
+
+          var $mensaje = document.forms[0].html.value;
+          var $mensaje = $("#tinymce").value;
+          if($mensaje == ""){
+            alert("El mensaje que está intentando enviar está vacío. Por favor, ingrese el mensaje para proceder con el envío.")
+            event.preventDefault();
+          }
+
+          else {
+
+
+
+            var $conteo = (document.querySelectorAll('input[id*="stud_"]:checked').length);
+            if($conteo == 0){
+              alert('Seleccione al  menos un estudiante para poder enviar los correos correspondientes.')
+              event.preventDefault();
+            }
+
+            else if($conteo == 1){
+              return confirm('Se enviará el mensaje a ' + $conteo + ' estudiante.');
+            }
+            else {
+              return confirm('Se enviará el mensaje a ' + $conteo + ' estudiantes.');
+            }
+          }
+          
+          //alert(document.querySelectorAll('input[id*="stud_"]:checked').length);
+          //alert(document.querySelectorAll('input[type="checkbox"]:checked').length);
+
+        });
+
+
+
+      {% for clase in clases %}
+          $("#id_{{clase.pk}}").click(function(){
+
+                var $checkbox = $("#collapse{{clase.pk}}").find("input");
+                if ($("#id_{{clase.pk}}").prop("checked") == true){
+                  if ($checkbox.prop("disabled") == true) {
+                    pass
+                  } else {
+                    $checkbox.prop("checked", true);
+                  }
+                  
+
+              }
+              else if($("#id_{{clase.pk}}").prop("checked") == false){
+                $checkbox.prop("checked", false);
+
+              }
+          });
+      {% endfor %}
+
+          $("#id_preescolar").click(function(){
+
+                var $checkbox = $("#accordion").find("input");
+                if ($("#id_preescolar").prop("checked") == true){
+                  $checkbox.prop("checked", true);
+              }
+              else if($("#id_preescolar").prop("checked") == false){
+                $checkbox.prop("checked", false);
+              }
+            
+          });
+          $("#id_elementary").click(function(){
+                var $checkbox = $("#accordion1").find("input");
+                if ($("#id_elementary").prop("checked") == true){
+                  $checkbox.prop("checked", true);
+              }
+              else if($("#id_elementary").prop("checked") == false){
+                $checkbox.prop("checked", false);
+              }
+          });
+
+          $("#id_middle").click(function(){
+                var $checkbox = $("#accordion2").find("input");
+                if ($("#id_middle").prop("checked") == true){
+                  $checkbox.prop("checked", true);
+              }
+              else if($("#id_middle").prop("checked") == false){
+                $checkbox.prop("checked", false);
+              }
+          });
+          $("#id_preparatory").click(function(){
+                var $checkbox = $("#accordion3").find("input");
+                if ($("#id_preparatory").prop("checked") == true){
+                  $checkbox.prop("checked", true);
+              }
+              else if($("#id_preparatory").prop("checked") == false){
+                $checkbox.prop("checked", false);
+              }
+          });      
+
+
+  
+      });
+
+
+    </script>
+
+  </div>
+
+  </body>
+
+</html>

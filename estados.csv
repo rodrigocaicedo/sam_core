@@ -1,0 +1,453 @@
+id_state,state,initial_date,final_date,observations,id_applications_id
+42,Error,"2017-10-24 19:23:38.868559",2017-10-30,"Importado de sistema anterior",79
+43,Error,"2017-10-24 19:23:39.019992",2017-10-24,"Importado de sistema anterior",80
+44,Error,"2017-10-24 19:23:39.187261",2017-10-24,"Importado de sistema anterior",81
+45,Error,"2017-10-24 19:23:39.346145",2017-10-24,"Importado de sistema anterior",82
+46,Error,"2017-10-24 19:23:39.505138",2017-10-25,"Importado de sistema anterior",83
+47,Error,"2017-10-24 19:23:39.680698",2017-10-25,"Importado de sistema anterior",84
+48,Error,"2017-10-24 19:23:39.847942",2017-10-24,"Importado de sistema anterior",85
+49,Error,"2017-10-24 19:23:40.015268",2017-10-24,"Importado de sistema anterior",86
+50,Error,"2017-10-24 19:23:40.165959",2017-10-24,"Importado de sistema anterior",87
+51,Error,"2017-10-24 19:23:40.308223",2017-10-24,"Importado de sistema anterior",88
+52,Error,"2017-10-24 19:23:40.442186",2017-10-24,"Importado de sistema anterior",89
+53,Error,"2017-10-24 19:23:40.592716",2017-10-31,"Importado de sistema anterior",90
+54,Error,"2017-10-24 19:23:40.767996",2017-10-24,"Importado de sistema anterior",91
+55,Error,"2017-10-24 19:23:40.994460",2017-10-30,"Importado de sistema anterior",92
+56,Error,"2017-10-24 19:23:41.170074",2017-10-25,"Importado de sistema anterior",93
+57,Error,"2017-10-24 19:23:41.337337",2017-10-25,"Importado de sistema anterior",94
+58,Error,"2017-10-24 19:23:41.512947",2017-10-30,"Importado de sistema anterior",95
+59,Error,"2017-10-24 19:23:41.688487",2017-10-24,"Importado de sistema anterior",96
+60,Error,"2017-10-24 19:23:41.855709",2017-10-24,"Importado de sistema anterior",97
+61,Error,"2017-10-24 19:23:42.031376",2017-10-24,"Importado de sistema anterior",98
+62,Error,"2017-10-24 19:23:42.198695",2017-10-30,"Importado de sistema anterior",99
+63,Error,"2017-10-24 19:23:42.365993",2017-10-24,"Importado de sistema anterior",100
+64,Error,"2017-10-24 19:23:42.541553",2017-10-24,"Importado de sistema anterior",101
+65,Error,"2017-10-24 19:23:42.692206",2017-10-30,"Importado de sistema anterior",102
+66,Error,"2017-10-24 19:23:42.851173",2017-10-24,"Importado de sistema anterior",103
+67,Error,"2017-10-24 19:23:43.010529",2017-10-30,"Importado de sistema anterior",104
+68,Error,"2017-10-24 19:23:43.244515",2017-10-31,"Importado de sistema anterior",105
+69,Error,"2017-10-24 19:23:43.420066",2017-10-31,"Importado de sistema anterior",106
+70,Error,"2017-10-24 19:23:43.595801",2017-10-24,"Importado de sistema anterior",107
+72,Error,"2017-10-24 19:23:43.938630",2017-10-24,"Importado de sistema anterior",109
+73,Error,"2017-10-24 19:23:44.131027",2017-10-30,"Importado de sistema anterior",110
+74,Error,"2017-10-24 19:23:44.373257",2017-10-31,"Importado de sistema anterior",111
+75,Error,"2017-10-24 19:23:44.548945",2017-10-30,"Importado de sistema anterior",112
+76,Error,"2017-10-24 19:23:44.732808",2017-10-25,"Importado de sistema anterior",113
+77,Error,"2017-10-24 19:23:44.900161",2017-10-31,"Importado de sistema anterior",114
+78,Error,"2017-10-24 19:23:45.067443",2017-10-24,"Importado de sistema anterior",115
+79,Error,"2017-10-24 19:23:45.284643",2017-10-30,"Importado de sistema anterior",116
+80,Error,"2017-10-24 19:23:45.443589",2017-10-24,"Importado de sistema anterior",117
+81,Error,"2017-10-24 19:23:45.619695",2017-10-24,"Importado de sistema anterior",118
+82,Error,"2017-10-24 19:23:45.786922",2017-10-24,"Importado de sistema anterior",119
+83,Error,"2017-10-24 19:23:45.962596",2017-10-30,"Importado de sistema anterior",120
+84,Error,"2017-10-24 19:23:46.138213",2017-10-24,"Importado de sistema anterior",121
+85,Error,"2017-10-24 19:23:46.313005",2017-10-24,"Importado de sistema anterior",122
+87,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",89
+88,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",82
+89,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",88
+90,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",80
+91,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",81
+92,Ingresado,"2017-10-24 05:00:00",,"Se reagendo Fecha Tour",91
+93,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",100
+94,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",101
+95,Ingresado,"2017-10-24 05:00:00",2017-12-21,"Se reagendo Fecha Tour",109
+96,Ingresado,"2017-10-24 05:00:00",2017-10-26,"Se reagendo Fecha Tour",98
+97,Ingresado,"2017-10-24 05:00:00",,"Se reagendo Fecha Tour",97
+98,Ingresado,"2017-10-24 05:00:00",,"Se reagendo Fecha Tour",85
+99,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",96
+100,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",122
+101,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",117
+102,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",103
+103,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",107
+104,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",118
+105,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",119
+106,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",121
+107,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",87
+108,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",86
+109,Ingresado,"2017-10-24 05:00:00",2017-10-30,"Se reagendo Fecha Tour",115
+110,Terminado,"2017-10-25 05:00:00",,"Para 2017-2018",93
+111,Terminado,"2017-10-25 05:00:00",,"Para 2017-2018 no siguieron el proceso",84
+112,Terminado,"2017-10-25 05:00:00",,"Para 2017-2018 no siguieron el proceso",83
+113,Terminado,"2017-10-25 05:00:00",,"Para 2017-2018 NO CUPOS",94
+114,Terminado,"2017-10-25 05:00:00",,"Para 2017-2018 NO CUPOS",113
+117,Documentos,"2017-10-26 05:00:00",2017-11-06,"Asiste a tour",82
+118,Documentos,"2017-10-26 05:00:00",,"Asiste a tour",88
+119,Documentos,"2017-10-26 05:00:00",,"Asiste a tour",81
+120,Documentos,"2017-10-26 05:00:00",2018-01-05,"Asiste a tour, paga en contabilidad",100
+121,Documentos,"2017-10-26 05:00:00",2018-01-05,"Asiste a tour, paga en contabilidad",101
+122,Documentos,"2017-10-26 05:00:00",,"Asiste a tour",98
+163,Ingresado,"2017-10-29 19:21:57",2017-11-15,"Sistema antiguo",206
+164,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",207
+165,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",208
+166,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",209
+169,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",212
+170,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",213
+171,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",214
+172,Error,"2017-10-29 19:21:57",2017-12-13,"Sistema antiguo",215
+173,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",216
+174,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",217
+176,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",219
+177,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",220
+178,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",221
+179,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",222
+180,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",223
+181,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",224
+182,Error,"2017-10-29 19:21:57",2017-10-30,"Sistema antiguo",225
+184,Pendiente,"2017-10-30 05:00:00",2017-10-30,"Pendiente de Agendar Fecha Tour",217
+185,Ingresado,"2017-10-30 05:00:00",2017-11-23,"Se reagendo Fecha Tour",217
+187,Terminado,"2017-10-30 05:00:00",,"Re-aplicación",103
+188,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",219
+190,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",122
+192,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",207
+193,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",89
+194,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",117
+195,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",212
+196,Terminado,"2017-10-30 05:00:00",,"Re-aplicación",214
+197,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",216
+198,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",107
+199,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",118
+200,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",119
+201,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",121
+202,Pendiente,"2017-10-30 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",208
+203,Pendiente,"2017-10-30 05:00:00",2017-11-16,"Pendiente de Agendar Fecha Tour",87
+204,Pendiente,"2017-10-30 05:00:00",2017-11-21,"Pendiente de Agendar Fecha Tour",86
+205,Pendiente,"2017-10-30 05:00:00",2017-11-07,"Pendiente de Agendar Fecha Tour",80
+206,Pendiente,"2017-10-30 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",115
+207,Pendiente,"2017-10-30 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",220
+208,Pendiente,"2017-10-30 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",96
+209,Pendiente,"2017-10-30 05:00:00",,"Pendiente de Agendar Fecha Tour",225
+210,Pendiente,"2017-10-30 05:00:00",,"Pendiente de Agendar Fecha Tour",102
+211,Pendiente,"2017-10-30 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",213
+212,Pendiente,"2017-10-30 05:00:00",,"Pendiente de Agendar Fecha Tour",224
+216,Terminado,"2017-10-30 05:00:00",,"Para 2017-2018 NO CUPOS",223
+217,Documentos,"2017-10-30 05:00:00",,"Enviar requisitos",110
+218,Terminado,"2017-10-30 05:00:00",,"Para 2017-2018 NO CUPOS",209
+219,Documentos,"2017-10-30 05:00:00",,Hermanos,79
+220,Documentos,"2017-10-30 05:00:00",,Hermanos,221
+221,Documentos,"2017-10-30 05:00:00",,Hermanos,95
+222,Terminado,"2017-10-30 05:00:00",,"Re-aplicación",92
+223,Documentos,"2017-10-30 05:00:00",,Hermanos,116
+224,Documentos,"2017-10-30 05:00:00",,Hermanos,222
+225,Documentos,"2017-10-30 05:00:00",,"Hermano se graduó",104
+226,Documentos,"2017-10-30 05:00:00",,Hermanos,112
+227,Documentos,"2017-10-30 05:00:00",,Hermanos,99
+234,Error,"2017-10-30 16:26:45",2017-10-31,"Sistema antiguo",236
+235,Error,"2017-10-30 16:26:45",2017-10-30,"Sistema antiguo",237
+236,Pendiente,"2017-10-30 05:00:00",2017-11-16,"Pendiente de Agendar Fecha Tour",237
+237,Terminado,"2017-10-30 05:00:00",2017-10-30,"edad cumplida",120
+238,Pendiente,"2017-10-30 05:00:00",2017-10-31,"Pendiente de Agendar Fecha Tour",120
+240,Terminado,"2017-10-31 05:00:00",2017-11-17,"Edad cumplida",120
+241,Pendiente,"2017-10-31 05:00:00",2017-12-13,"Pendiente de Agendar Fecha Tour",114
+244,Pendiente,"2017-10-31 05:00:00",2017-11-16,"Pendiente de Agendar Fecha Tour",236
+245,Pendiente,"2017-10-31 05:00:00",,"Pendiente de Agendar Fecha Tour",111
+246,Pendiente,"2017-10-31 05:00:00",2017-12-11,"Pendiente de Agendar Fecha Tour",90
+247,Pendiente,"2017-10-31 05:00:00",2017-12-01,"Pendiente de Agendar Fecha Tour",106
+248,Pendiente,"2017-10-31 05:00:00",2017-12-11,"Pendiente de Agendar Fecha Tour",105
+249,Error,"2017-10-31 16:19:02.813813",2017-11-01,"Sistema antiguo",241
+250,Pendiente,"2017-11-01 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",241
+251,Error,"2017-11-01 18:19:02.686743",2017-11-06,"Sistema antiguo",242
+252,Error,"2017-11-03 15:19:02.637842",2017-11-06,"Sistema antiguo",243
+253,Pendiente,"2017-11-06 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",243
+254,Pendiente,"2017-11-06 05:00:00",2017-11-16,"Pendiente de Agendar Fecha Tour",242
+255,Terminado,"2017-11-06 05:00:00",,"Salen fuera del país",82
+256,Pendiente,"2017-11-07 05:00:00",2017-11-10,"Pendiente de Agendar Fecha Tour",80
+257,Error,"2017-11-07 12:19:01.886326",2017-11-07,"Sistema antiguo",244
+258,Pendiente,"2017-11-07 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",244
+259,Error,"2017-11-07 18:19:02.831100",2017-11-08,"Sistema antiguo",245
+260,Pendiente,"2017-11-08 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",245
+261,Error,"2017-11-09 13:19:02.166277",2017-11-10,"Sistema antiguo",246
+262,Error,"2017-11-09 13:19:02.166277",2017-11-10,"Sistema antiguo",247
+263,Error,"2017-11-09 15:19:02.664567",2017-11-10,"Sistema antiguo",248
+264,Pendiente,"2017-11-10 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",248
+265,Pendiente,"2017-11-10 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",247
+266,Pendiente,"2017-11-10 05:00:00",2017-11-17,"Pendiente de Agendar Fecha Tour",246
+267,Pendiente,"2017-11-10 05:00:00",2017-11-10,"Pendiente de Agendar Fecha Tour",80
+268,Pendiente,"2017-11-10 05:00:00",2017-11-10,"Pendiente de Agendar Fecha Tour",80
+269,Ingresado,"2017-11-10 05:00:00",2017-11-10,"Se reagendo Fecha Tour",80
+270,Documentos,"2017-11-10 05:00:00",2018-01-05,"No viene a tour, sí evaluaciones",80
+271,Error,"2017-11-11 23:19:02.631176",2017-11-13,"Sistema antiguo",249
+272,Pendiente,"2017-11-13 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",249
+273,Error,"2017-11-13 11:19:02.044112",2017-11-13,"Sistema antiguo",250
+274,Error,"2017-11-13 11:19:02.044112",2017-11-13,"Sistema antiguo",251
+275,Pendiente,"2017-11-13 05:00:00",2017-11-13,"Pendiente de Agendar Fecha Tour",251
+276,Ingresado,"2017-11-13 05:00:00",2017-11-13,"Se reagendo Fecha Tour",251
+277,Documentos,"2017-11-13 05:00:00",,"Niña con cáncer",251
+278,Pendiente,"2017-11-13 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",250
+279,Error,"2017-11-13 16:19:01.919871",2017-11-14,"Sistema antiguo",252
+280,Pendiente,"2017-11-14 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",252
+281,Ingresado,"2017-11-15 05:00:00",2017-11-15,"Se reagendo Fecha Tour",252
+282,Ingresado,"2017-11-15 05:00:00",,"Se reagendo Fecha Tour",122
+283,Ingresado,"2017-11-15 05:00:00",2017-11-15,"Se reagendo Fecha Tour",206
+284,Ingresado,"2017-11-15 05:00:00",2017-11-16,"Se reagendo Fecha Tour",206
+285,Ingresado,"2017-11-15 05:00:00",2017-12-05,"Se reagendo Fecha Tour",89
+286,Ingresado,"2017-11-15 05:00:00",2017-11-16,"Se reagendo Fecha Tour",207
+287,Pendiente,"2017-11-15 05:00:00",2017-11-16,"Pendiente de Agendar Fecha Tour",117
+288,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",212
+289,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",219
+290,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",216
+291,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",107
+292,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",118
+293,Error,"2017-11-15 11:19:02.065761",2017-11-16,"Sistema antiguo",253
+294,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",118
+295,Pendiente,"2017-11-15 05:00:00",2017-11-15,"Pendiente de Agendar Fecha Tour",118
+296,Ingresado,"2017-11-15 05:00:00",,"Se reagendo Fecha Tour",119
+297,Ingresado,"2017-11-15 05:00:00",,"Se reagendo Fecha Tour",118
+298,Ingresado,"2017-11-15 05:00:00",2017-12-01,"Se reagendo Fecha Tour",121
+299,Ingresado,"2017-11-15 05:00:00",2017-12-01,"Se reagendo Fecha Tour",208
+300,Ingresado,"2017-11-15 05:00:00",2017-11-21,"Se reagendo Fecha Tour",252
+301,Ingresado,"2017-11-15 05:00:00",,"Se reagendo Fecha Tour",219
+302,Ingresado,"2017-11-15 05:00:00",2017-12-01,"Se reagendo Fecha Tour",216
+303,Ingresado,"2017-11-15 05:00:00",2017-12-01,"Se reagendo Fecha Tour",107
+304,Ingresado,"2017-11-15 05:00:00",2017-12-01,"Se reagendo Fecha Tour",212
+305,Error,"2017-11-15 16:19:02.118087",2017-11-20,"Sistema antiguo",254
+306,Ingresado,"2017-11-16 05:00:00",,"Se reagendo Fecha Tour",117
+307,Ingresado,"2017-11-16 05:00:00",2017-12-01,"Se reagendo Fecha Tour",206
+308,Ingresado,"2017-11-16 05:00:00",2017-12-01,"Se reagendo Fecha Tour",87
+309,Pendiente,"2017-11-16 05:00:00",2017-12-05,"Pendiente de Agendar Fecha Tour",253
+310,Ingresado,"2017-11-16 05:00:00",2017-12-01,"Se reagendo Fecha Tour",207
+311,Ingresado,"2017-11-16 05:00:00",,"Se reagendo Fecha Tour",242
+312,Ingresado,"2017-11-16 05:00:00",2017-12-01,"Se reagendo Fecha Tour",237
+313,Error,"2017-11-16 15:19:01.813937",2017-11-16,"Sistema antiguo",255
+314,Error,"2017-11-16 15:19:01.813937",2017-11-20,"Sistema antiguo",256
+315,Error,"2017-11-16 15:19:01.813937",2017-11-20,"Sistema antiguo",257
+316,Ingresado,"2017-11-16 05:00:00",2017-12-01,"Se reagendo Fecha Tour",236
+317,Terminado,"2017-11-16 05:00:00",,"Apellidos equivocados",255
+318,Ingresado,"2017-11-17 05:00:00",2017-11-28,"Se reagendo Fecha Tour",120
+319,Ingresado,"2017-11-17 05:00:00",,"Se reagendo Fecha Tour",246
+320,Ingresado,"2017-11-17 05:00:00",,"Se reagendo Fecha Tour",115
+321,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",243
+322,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",244
+323,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",248
+324,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",220
+325,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",96
+326,Ingresado,"2017-11-17 05:00:00",2017-12-01,"Se reagendo Fecha Tour",213
+327,Error,"2017-11-18 13:19:01.897342",2017-11-20,"Sistema antiguo",258
+328,Error,"2017-11-18 14:19:02.744603",2017-11-20,"Sistema antiguo",259
+329,Error,"2017-11-18 14:19:02.744603",2017-11-20,"Sistema antiguo",260
+330,Ingresado,"2017-11-20 05:00:00",2017-11-21,"Se reagendo Fecha Tour",258
+331,Ingresado,"2017-11-20 05:00:00",2017-11-21,"Se reagendo Fecha Tour",259
+332,Ingresado,"2017-11-20 05:00:00",2017-11-21,"Se reagendo Fecha Tour",260
+333,Pendiente,"2017-11-20 05:00:00",,"Pendiente de Agendar Fecha Tour",257
+334,Pendiente,"2017-11-20 05:00:00",,"Pendiente de Agendar Fecha Tour",256
+335,Ingresado,"2017-11-20 05:00:00",2017-11-21,"Se reagendo Fecha Tour",254
+336,Error,"2017-11-20 17:19:02.640898",2017-11-21,"Sistema antiguo",261
+337,Error,"2017-11-20 22:19:02.133910",2017-11-21,"Sistema antiguo",262
+338,Ingresado,"2017-11-21 05:00:00",2017-11-21,"Se reagendo Fecha Tour",262
+339,Pendiente,"2017-11-21 05:00:00",2017-11-22,"Pendiente de Agendar Fecha Tour",261
+340,Error,"2017-11-21 14:19:02.494031",2017-11-21,"Sistema antiguo",263
+341,Ingresado,"2017-11-21 05:00:00",2017-12-21,"Se reagendo Fecha Tour",263
+342,Ingresado,"2017-11-21 05:00:00",2017-12-21,"Se reagendo Fecha Tour",262
+343,Ingresado,"2017-11-21 05:00:00",2017-12-21,"Se reagendo Fecha Tour",260
+344,Ingresado,"2017-11-21 05:00:00",2017-12-21,"Se reagendo Fecha Tour",259
+345,Ingresado,"2017-11-21 05:00:00",2017-12-21,"Se reagendo Fecha Tour",258
+346,Ingresado,"2017-11-21 05:00:00",,"Se reagendo Fecha Tour",254
+347,Ingresado,"2017-11-21 05:00:00",2017-12-01,"Se reagendo Fecha Tour",86
+348,Ingresado,"2017-11-21 05:00:00",,"Se reagendo Fecha Tour",252
+349,Error,"2017-11-22 08:19:02.611214",2017-11-22,"Sistema antiguo",264
+350,Error,"2017-11-22 08:19:02.611214",2017-11-22,"Sistema antiguo",265
+351,Ingresado,"2017-11-22 05:00:00",,"Se reagendo Fecha Tour",265
+352,Ingresado,"2017-11-22 05:00:00",,"Se reagendo Fecha Tour",264
+353,Ingresado,"2017-11-22 05:00:00",2017-12-21,"Se reagendo Fecha Tour",261
+354,Ingresado,"2017-11-22 05:00:00",2017-12-21,"Se reagendo Fecha Tour",241
+355,Ingresado,"2017-11-22 05:00:00",2017-12-04,"Se reagendo Fecha Tour",250
+356,Ingresado,"2017-11-22 05:00:00",2017-12-13,"Se reagendo Fecha Tour",247
+357,Ingresado,"2017-11-22 05:00:00",,"Se reagendo Fecha Tour",245
+358,Ingresado,"2017-11-22 05:00:00",2017-12-21,"Se reagendo Fecha Tour",249
+359,Documentos,"2017-11-23 05:00:00",2018-01-05,"tour #1",217
+360,Error,"2017-11-23 13:19:01.957326",2017-11-23,"Sistema antiguo",266
+361,Ingresado,"2017-11-23 05:00:00",2017-12-13,"Se reagendo Fecha Tour",266
+362,Error,"2017-11-27 12:19:02.610041",2017-11-27,"Sistema antiguo",267
+363,Ingresado,"2017-11-27 05:00:00",2017-12-21,"Se reagendo Fecha Tour",267
+364,Error,"2017-11-27 15:19:02.060641",2017-11-28,"Sistema antiguo",268
+365,Error,"2017-11-28 09:19:02.100566",2017-11-28,"Sistema antiguo",269
+366,Pendiente,"2017-11-28 05:00:00",2017-12-05,"Pendiente de Agendar Fecha Tour",269
+367,Terminado,"2017-11-28 05:00:00",,"Para 2017-2018 NO CUPOS",268
+368,Ingresado,"2017-11-28 05:00:00",2017-12-13,"Se reagendo Fecha Tour",120
+369,Error,"2017-11-28 20:19:02.593212",2017-11-29,"Sistema antiguo",270
+370,Ingresado,"2017-11-29 05:00:00",2017-11-29,"Se reagendo Fecha Tour",270
+371,Pendiente,"2017-11-29 05:00:00",2017-11-29,"Pendiente de Agendar Fecha Tour",270
+372,Ingresado,"2017-11-29 05:00:00",2017-12-19,"Se reagendo Fecha Tour",270
+373,Error,"2017-11-30 21:19:02.249279",2017-12-01,"Sistema antiguo",271
+374,Error,"2017-12-01 10:19:02.280621",2017-12-01,"Sistema antiguo",272
+375,Error,"2017-12-01 11:19:02.497548",2017-12-05,"Sistema antiguo",273
+376,Error,"2017-12-01 11:19:02.497548",2017-12-05,"Sistema antiguo",274
+377,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",236
+378,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",87
+379,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",237
+380,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",212
+381,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",216
+382,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",107
+383,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",121
+384,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",208
+385,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",206
+386,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",207
+387,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",86
+388,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",243
+389,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",244
+390,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",248
+391,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",220
+392,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",96
+393,Documentos,"2017-12-01 05:00:00",,"Asiste a tour",213
+394,Ingresado,"2017-12-01 05:00:00",2017-12-01,"Se reagendo Fecha Tour",271
+395,Ingresado,"2017-12-01 05:00:00",2017-12-01,"Se reagendo Fecha Tour",271
+396,Documentos,"2017-12-01 05:00:00",,"ya vino a tour hace 6 meses",271
+397,Ingresado,"2017-12-01 05:00:00",,"Se reagendo Fecha Tour",272
+398,Ingresado,"2017-12-01 05:00:00",2017-12-01,"Se reagendo Fecha Tour",106
+399,Documentos,"2017-12-01 05:00:00",,"No viene a tour, sí evaluaciones",106
+400,Error,"2017-12-02 22:19:02.572727",2017-12-05,"Sistema antiguo",275
+401,Ingresado,"2017-12-04 05:00:00",,"Se reagendo Fecha Tour",250
+402,Error,"2017-12-04 17:19:02.480265",2017-12-05,"Sistema antiguo",276
+403,Ingresado,"2017-12-05 05:00:00",2017-12-21,"Se reagendo Fecha Tour",276
+404,Ingresado,"2017-12-05 05:00:00",2017-12-21,"Se reagendo Fecha Tour",275
+405,Ingresado,"2017-12-05 05:00:00",2017-12-11,"Se reagendo Fecha Tour",273
+406,Ingresado,"2017-12-05 05:00:00",,"Se reagendo Fecha Tour",269
+407,Ingresado,"2017-12-05 05:00:00",2017-12-11,"Se reagendo Fecha Tour",274
+408,Ingresado,"2017-12-05 05:00:00",2017-12-05,"Se reagendo Fecha Tour",253
+409,Ingresado,"2017-12-05 05:00:00",2017-12-21,"Se reagendo Fecha Tour",253
+410,Documentos,"2017-12-05 05:00:00",,"Partida de nacimiento",89
+411,Error,"2017-12-08 11:19:02.546505",2017-12-13,"Sistema antiguo",277
+412,Error,"2017-12-08 15:19:02.065873",2017-12-13,"Sistema antiguo",278
+413,Error,"2017-12-08 15:19:02.065873",2017-12-13,"Sistema antiguo",279
+414,Error,"2017-12-10 23:19:02.306067",2017-12-11,"Sistema antiguo",280
+415,Ingresado,"2017-12-11 05:00:00",2017-12-21,"Se reagendo Fecha Tour",90
+416,Error,"2017-12-11 09:19:02.545746",2017-12-12,"Sistema antiguo",281
+417,Ingresado,"2017-12-11 05:00:00",2017-12-11,"Se reagendo Fecha Tour",105
+418,Documentos,"2017-12-11 05:00:00",,"ya vino a tour",105
+419,Error,"2017-12-11 10:19:02.283654",2017-12-12,"Sistema antiguo",282
+420,Error,"2017-12-11 10:19:02.283654",2017-12-12,"Sistema antiguo",283
+421,Ingresado,"2017-12-11 05:00:00",2018-01-03,"Se reagendo Fecha Tour",274
+422,Ingresado,"2017-12-11 05:00:00",2018-01-10,"Se reagendo Fecha Tour",273
+423,Ingresado,"2017-12-11 05:00:00",2017-12-21,"Se reagendo Fecha Tour",280
+424,Error,"2017-12-11 13:19:02.109971",2017-12-12,"Sistema antiguo",284
+425,Error,"2017-12-11 14:19:02.650410",2017-12-12,"Sistema antiguo",285
+426,Error,"2017-12-11 18:19:01.830503",2017-12-12,"Sistema antiguo",286
+427,Error,"2017-12-11 23:19:02.375233",2017-12-12,"Sistema antiguo",287
+428,Ingresado,"2017-12-12 05:00:00",2018-01-03,"Se reagendo Fecha Tour",286
+429,Ingresado,"2017-12-12 05:00:00",2017-12-21,"Se reagendo Fecha Tour",285
+430,Ingresado,"2017-12-12 05:00:00",,"Se reagendo Fecha Tour",283
+431,Ingresado,"2017-12-12 05:00:00",,"Se reagendo Fecha Tour",282
+432,Ingresado,"2017-12-12 05:00:00",2017-12-21,"Se reagendo Fecha Tour",281
+433,Ingresado,"2017-12-12 05:00:00",2018-01-03,"Se reagendo Fecha Tour",287
+434,Ingresado,"2017-12-12 05:00:00",2018-01-03,"Se reagendo Fecha Tour",284
+435,Terminado,"2017-12-13 05:00:00",2017-12-13,"Volverá a aplicar el próximo año",120
+436,Ingresado,"2017-12-13 05:00:00",2018-01-03,"Se reagendo Fecha Tour",278
+437,Ingresado,"2017-12-13 05:00:00",2018-01-03,"Se reagendo Fecha Tour",279
+438,Terminado,"2017-12-13 05:00:00",,"Aplicará el próximo año",114
+439,Error,"2017-12-13 12:19:01.821013",2017-12-13,"Sistema antiguo",288
+440,Ingresado,"2017-12-13 05:00:00",2018-01-03,"Se reagendo Fecha Tour",266
+441,Pendiente,"2017-12-13 05:00:00",,"Pendiente de Agendar Fecha Tour",120
+442,Ingresado,"2017-12-13 05:00:00",2018-01-10,"Se reagendo Fecha Tour",277
+443,Ingresado,"2017-12-13 05:00:00",2018-01-03,"Se reagendo Fecha Tour",247
+444,Terminado,"2017-12-13 05:00:00",,"Aplicación con datos de madre",215
+445,Ingresado,"2017-12-13 05:00:00",2018-01-03,"Se reagendo Fecha Tour",288
+446,Error,"2017-12-14 00:19:02.133925",2018-01-03,"Sistema antiguo",289
+447,Error,"2017-12-14 13:19:02.836935",2018-01-03,"Sistema antiguo",290
+448,Error,"2017-12-14 16:19:02.058966",2018-01-04,"Sistema antiguo",291
+449,Error,"2017-12-16 08:19:02.790126",2017-12-20,"Sistema antiguo",292
+450,Error,"2017-12-16 13:19:02.394885",2017-12-19,"Sistema antiguo",293
+451,Error,"2017-12-18 11:19:01.938408",2017-12-19,"Sistema antiguo",294
+452,Documentos,"2017-12-19 05:00:00",,"Asiste a tour",270
+453,Ingresado,"2017-12-19 05:00:00",2018-01-03,"Se reagendo Fecha Tour",294
+454,Ingresado,"2017-12-19 05:00:00",2018-01-03,"Se reagendo Fecha Tour",293
+455,Ingresado,"2017-12-20 05:00:00",,"Se reagendo Fecha Tour",292
+456,Pendiente,"2017-12-20 17:58:22.062127",2018-01-03,"Aplicacion Inicial",295
+457,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",275
+458,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",285
+459,Documentos,"2017-12-21 05:00:00",,"No viene a tour, sí evaluaciones",109
+460,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",263
+461,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",258
+462,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",260
+463,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",259
+464,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",90
+465,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",262
+466,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",267
+467,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",241
+468,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",261
+469,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",249
+470,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",280
+471,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",253
+472,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",281
+473,Documentos,"2017-12-21 05:00:00",,"Asiste a tour",276
+474,Error,"2017-12-30 14:19:02.215774",2018-01-03,"Sistema antiguo",296
+475,Error,"2017-12-30 14:19:02.215774",2018-01-03,"Sistema antiguo",297
+476,Error,"2018-01-01 19:19:01.810763",2018-01-03,"Sistema antiguo",298
+477,Error,"2018-01-01 19:19:01.810763",2018-01-03,"Sistema antiguo",299
+478,Error,"2018-01-03 07:19:01.898331",2018-01-03,"Sistema antiguo",300
+479,Documentos,"2018-01-03 05:00:00",2018-01-03,"Asiste a tour",286
+480,Terminado,"2018-01-03 05:00:00",,"Desiste por cupos",286
+481,Error,"2018-01-03 11:19:02.392695",2018-01-03,"Sistema antiguo",301
+482,Ingresado,"2018-01-03 05:00:00",2018-01-03,"Se reagendo Fecha Tour",298
+483,Ingresado,"2018-01-03 05:00:00",2018-01-03,"Se reagendo Fecha Tour",299
+484,Documentos,"2018-01-03 05:00:00",,"Estuvo antes en el colegio",299
+485,Documentos,"2018-01-03 05:00:00",,"Estuvo antes en el colegio",298
+486,Ingresado,"2018-01-03 05:00:00",2018-01-10,"Se reagendo Fecha Tour",301
+487,Ingresado,"2018-01-03 05:00:00",2018-01-10,"Se reagendo Fecha Tour",300
+488,Ingresado,"2018-01-03 05:00:00",2018-01-10,"Se reagendo Fecha Tour",290
+489,Ingresado,"2018-01-03 05:00:00",,"Se reagendo Fecha Tour",288
+490,Ingresado,"2018-01-03 05:00:00",,"Se reagendo Fecha Tour",278
+491,Ingresado,"2018-01-03 05:00:00",,"Se reagendo Fecha Tour",279
+492,Ingresado,"2018-01-03 05:00:00",2018-01-03,"Se reagendo Fecha Tour",297
+493,Documentos,"2018-01-03 05:00:00",,"ya vino a tour",297
+494,Ingresado,"2018-01-03 05:00:00",2018-01-03,"Se reagendo Fecha Tour",296
+495,Documentos,"2018-01-03 05:00:00",,"Asiste a tour",296
+496,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",294
+497,Terminado,"2018-01-03 05:00:00",,pruebita,295
+498,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",293
+499,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",274
+500,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",247
+501,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",287
+502,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",284
+503,Pendiente,"2018-01-03 05:00:00",,"Pendiente de Agendar Fecha Tour",289
+504,Terminado,"2018-01-03 05:00:00",2018-01-04,"Aplicará el próximo año",266
+505,Error,"2018-01-03 16:19:02.695128",2018-01-04,"Sistema antiguo",302
+506,Error,"2018-01-03 22:19:02.738422",2018-01-04,"Sistema antiguo",303
+507,Error,"2018-01-04 09:19:02.229427",2018-01-04,"Sistema antiguo",304
+508,Error,"2018-01-04 09:19:02.229427",2018-01-04,"Sistema antiguo",305
+509,Error,"2018-01-04 10:19:03.065661",2018-01-04,"Sistema antiguo",306
+510,Error,"2018-01-04 11:19:02.474617",2018-01-04,"Sistema antiguo",307
+511,Error,"2018-01-04 11:19:02.474617",2018-01-04,"Sistema antiguo",308
+512,Pendiente,"2018-01-04 05:00:00",,"Pendiente de Agendar Fecha Tour",266
+513,Ingresado,"2018-01-04 05:00:00",2018-01-10,"Se reagendo Fecha Tour",302
+514,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",303
+515,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",304
+516,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",305
+517,Pendiente,"2018-01-04 05:00:00",,"Pendiente de Agendar Fecha Tour",291
+518,Error,"2018-01-04 12:19:02.234434",2018-01-04,"Sistema antiguo",309
+519,Error,"2018-01-04 12:19:02.234434",2018-01-04,"Sistema antiguo",310
+520,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",308
+521,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",307
+522,Ingresado,"2018-01-04 05:00:00",,"Se reagendo Fecha Tour",309
+523,Ingresado,"2018-01-04 05:00:00",2018-01-04,"Se reagendo Fecha Tour",310
+524,Ingresado,"2018-01-04 05:00:00",2018-01-04,"Se reagendo Fecha Tour",306
+525,Documentos,"2018-01-04 05:00:00",,"Hermano en Montebello",306
+526,Documentos,"2018-01-04 05:00:00",,"Hijo de Juan Pablo",310
+527,Error,"2018-01-04 15:19:02.174156",2018-01-05,"Sistema antiguo",311
+528,Error,"2018-01-04 15:19:02.174156",2018-01-05,"Sistema antiguo",312
+529,Ingresado,"2018-01-05 05:00:00",,"Se reagendo Fecha Tour",312
+530,Ingresado,"2018-01-05 05:00:00",,"Se reagendo Fecha Tour",311
+531,Error,"2018-01-05 10:19:02.102477",2018-01-08,"Sistema antiguo",313
+532,Error,"2018-01-05 11:19:02.314118",,"Sistema antiguo",314
+533,Error,"2018-01-05 11:19:02.314118",,"Sistema antiguo",315
+534,Evaluaciones,"2018-01-05 05:00:00",,"En Proceso de Evaluaciones",100
+535,Evaluaciones,"2018-01-05 05:00:00",,"En Proceso de Evaluaciones",101
+536,Evaluaciones,"2018-01-05 05:00:00",,"En Proceso de Evaluaciones",80
+537,Evaluaciones,"2018-01-05 05:00:00",,"En Proceso de Evaluaciones",217
+538,Error,"2018-01-05 13:19:02.346894",,"Sistema antiguo",316
+539,Error,"2018-01-05 13:19:02.346894",,"Sistema antiguo",317
+540,Error,"2018-01-05 13:19:02.346894",,"Sistema antiguo",318
+541,Error,"2018-01-08 08:19:02.432072",2018-01-08,"Sistema antiguo",319
+542,Ingresado,"2018-01-08 05:00:00",,"Se reagendo Fecha Tour",319
+543,Ingresado,"2018-01-08 05:00:00",,"Se reagendo Fecha Tour",313
+544,Error,"2018-01-08 10:19:02.346053",,"Sistema antiguo",320
+545,Error,"2018-01-08 10:19:02.346053",,"Sistema antiguo",321
+546,Error,"2018-01-08 12:19:02.176811",,"Sistema antiguo",322
+548,Error,"2018-01-08 17:19:02.074095",,"Sistema antiguo",324
+549,Error,"2018-01-08 19:19:02.258707",,"Sistema antiguo",325
+555,Error,"2018-01-09 11:19:02.573192",,"Sistema antiguo",326
+556,Error,"2018-01-09 14:19:02.583930",,"Sistema antiguo",327
+559,Error,"2018-01-09 15:19:02.470312",,"Sistema antiguo",328
+565,Error,"2018-01-09 16:19:02.258182",,"Sistema antiguo",330
+566,Error,"2018-01-09 16:19:02.258182",,"Sistema antiguo",331
+567,Error,"2018-01-09 17:19:02.123592",,"Sistema antiguo",332
+568,Documentos,"2018-01-10 05:00:00",,"Asiste a tour",273
+569,Documentos,"2018-01-10 05:00:00",,"Asiste a tour",302

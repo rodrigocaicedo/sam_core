@@ -1,0 +1,312 @@
+<!--
+
+{% for x in asignaciones %}
+{{x.profesor}}
+{{x.actividad}}
+{%endfor%}
+
+
+{% load staticfiles %}
+{% load l10n %}
+-->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calificación para Subsidio Familiar - Registros Enviados</title>
+
+		<script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+		<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+		<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+		
+
+
+
+	</head>
+
+	<body style="background:white">
+
+		<div class = "container-fluid">
+			<div class="container page-header">
+	      
+		        <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+		          <img id = "logo-montebello" src="/static/logo.png" width="120" height="120">
+		        </div>
+		          
+		        <div class="col-md-9 col-sm-9 col-xs-9" align="right">
+		          <h1>Montebello Academy</h1>
+		          <h3>Calificación para Subsidio Familiar</h3>
+		          <h5>{{enviado.solicitante|title}} - {{enviado.email}} - <a href="../">Volver</a></h5>
+
+		        </div>
+			</div>
+
+			<div class = "container col-md-12">
+				<p> Información detallada de la solicitud No. <b>{{enviado.pk}}</b>, de <b>{{enviado.solicitante|title}}</b>.</p>
+
+				<h2>Información de Representantes</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Relación</th>
+							<th>No. Identidad</th>
+							<th>Estado Civil</th>
+							<th>Fecha de Nacimiento</th>
+							<th>Lugar de Nacimiento</th>
+							<th>Nivel de Estudios</th>
+							<th>Título</th>
+							<th>Teléfono</th>
+							<th>Celular</th>
+							<th>No. hijos</th>
+							<th>Lugar Trabajo</th>
+							<th>Cargo</th>
+							<th>Tiempo</th>
+							<th>Dirección</th>
+							<th>Teléfono</th>
+							<th>Correo Personal</th>
+							<th>Correo Trabajo</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for representante in enviado.representante_set.all %}
+						<tr>
+							<td>{{representante|title}}</td>
+							<td>{{representante.relacion}}</td>
+							<td>{{representante.numero_id}}</td>
+							<td>{{representante.estado_civil}}</td>
+							<td>{{representante.fecha_nacimiento}}</td>
+							<td>{{representante.get_pais_nacimiento_display}}-{{representante.ciudad_nacimiento}}</td>
+							<td>{{representante.nivel_estudios}}</td>
+							<td>{{representante.titulo}}</td>
+							<td>{{representante.telefono_fijo}}</td>
+							<td>{{representante.telefono_celular}}</td>
+							<td>{{representante.numero_hijos}}</td>
+							<td>{{representante.lugar_trabajo}}</td>
+							<td>{{representante.cargo}}</td>
+							<td>{{representante.tiempo_trabajo}}</td>
+							<td>{{representante.direccion_trabajo}}</td>
+							<td>{{representante.telefono_trabajo}}</td>
+							<td>{{representante.correo_personal}}</td>
+							<td>{{representante.correo_trabajo}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+				<h2>Información de Estudiantes</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>No. Identidad</th>
+							<th>Género</th>
+							<th>Fecha de Nacimiento</th>
+							<th>Lugar de Nacimiento</th>
+							<th>Grado o Curso</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						{% for estudiante in enviado.estudiante_set.all %}
+						<tr>
+							<td>{{estudiante|title}}</td>
+							<td>{{estudiante.numero_id}}</td>
+							<td>{{estudiante.genero}}</td>
+							<td>{{estudiante.fecha_nacimiento}}</td>
+							<td>{{estudiante.get_pais_nacimiento_display}}-{{estudiante.ciudad_nacimiento}}</td>
+							<td>{{estudiante.nivel}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+				<h2>Información de la Familia</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Nombres</th>
+							<th>Fecha de Nacimiento</th>
+							<th>No. Identidad</th>
+							<th>Estado Civil</th>
+							<th>Parentesco</th>
+							<th>Nivel de Estudios</th>
+							<th>Título</th>
+							<th>Actividad</th>
+							<th>Enfermedad Crónica</th>
+							<th>Discapacidad</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for integrante in enviado.integrante_familia_set.all %}
+						<tr>
+							<td>{{integrante|title}}</td>
+							<td>{{integrante.fecha_nacimiento}}</td>
+							<td>{{integrante.numero_id}}</td>
+							<td>{{integrante.estado_civil}}</td>
+							<td>{{integrante.parentesco}}</td>
+							<td>{{integrante.nivel_estudios}}</td>
+							<td>{{integrante.titulo}}</td>
+							<td>{{integrante.actividad}}</td>
+							<td>{{integrante.enfermedad_cronica}}</td>
+							<td>{{integrante.discapacidad}}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+
+				<h2>Información del Domicilio</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>País</th>
+							<th>Provincia</th>
+							<th>Ciudad</th>
+							<th>Parroquia</th>
+							<th>Tipo de Parroquia</th>
+							<th>Barrio</th>
+							<th>Zona</th>
+							<th>Calle Principal</th>
+							<th>Calle Secundaria</th>
+							<th>Número</th>
+							<th>Teléfono</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{enviado.domicilio.get_pais_residencia_display}}</td>
+							<td>{{enviado.domicilio.provincia_residencia}}</td>
+							<td>{{enviado.domicilio.ciudad_residencia}}</td>
+							<td>{{enviado.domicilio.parroquia_residencia}}</td>
+							<td>{{enviado.domicilio.tipo_parroquia}}</td>
+							<td>{{enviado.domicilio.barrio}}</td>
+							<td>{{enviado.domicilio.zona}}</td>
+							<td>{{enviado.domicilio.direccion_principal}}</td>
+							<td>{{enviado.domicilio.direccion_secundaria}}</td>
+							<td>{{enviado.domicilio.direccion_numero}}</td>
+							<td>{{enviado.domicilio.telefono_casa}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h2>Información de la Situación Habitacional</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Posesión sobre Vivienda</th>
+							<th>Tipo de Vivienda</th>
+							<th>Estructura de Vivienda</th>
+							<th>Agua Potable</th>
+							<th>Alcantarillado</th>
+							<th>Electricidad</th>
+							<th>Teléfono Fijo</th>
+							<th>Internet</th>
+							<th>Tv Cable</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{enviado.situacion_habitacional.posesion_vivienda}}</td>
+							<td>{{enviado.situacion_habitacional.tipo_vivienda}}</td>
+							<td>{{enviado.situacion_habitacional.estructura_vivienda}}</td>
+							<td>{{enviado.situacion_habitacional.agua_potable}}</td>
+							<td>{{enviado.situacion_habitacional.alcantarillado}}</td>
+							<td>{{enviado.situacion_habitacional.electricidad}}</td>
+							<td>{{enviado.situacion_habitacional.telefono_fijo}}</td>
+							<td>{{enviado.situacion_habitacional.internet}}</td>
+							<td>{{enviado.situacion_habitacional.tv_cable}}</td>																																			
+						</tr>
+					</tbody>
+				</table>
+
+				<h2>Información del Responsable de Gastos Educativos</h2>
+				<p>{{enviado.responsable_gastos.responsable_gastos}}</p>
+
+				<h2>Información de Ingresos</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Por Relación de Dependencia</th>
+							<th>Por Negocios</th>
+							<th>Por Inversiones</th>
+							<th>Por Arriendos</th>
+							<th>Por Otras Fuentes {{enviado.ingresos.otros}}</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{enviado.ingresos.dependencias}}</td>
+							<td>{{enviado.ingresos.negocios}}</td>
+							<td>{{enviado.ingresos.inversiones}}</td>
+							<td>{{enviado.ingresos.arriendos}}</td>
+							<td>{{enviado.ingresos.otros_ingreso}}</td>																																																								
+						</tr>
+					</tbody>
+				</table>
+
+
+				<h2>Información de Gastos</h2>
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Gastos de Vivienda</th>
+							<th>Gastos de Alimentación</th>
+							<th>Gastos de Educación</th>
+							<th>Gastos de Transporte</th>
+							<th>Gastos de Salud</th>
+							<th>Gastos de Vestimenta</th>
+							<th>Otros Gastos</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{enviado.gastos.gastos_vivienda}}</td>
+							<td>{{enviado.gastos.gastos_alimentacion}}</td>
+							<td>{{enviado.gastos.gastos_educacion}}</td>
+							<td>{{enviado.gastos.gastos_transporte}}</td>
+							<td>{{enviado.gastos.gastos_salud}}</td>																
+							<td>{{enviado.gastos.gastos_vestimenta}}</td>
+							<td>{{enviado.gastos.gastos_otros}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h2>Motivo de la Solicitud</h2>
+				<p>{{enviado.motivo_solicitud}}</p>
+
+
+				<h2>Capacidad de Pago por Estudiante</h2>
+				<p>USD {{enviado.capacidad_pago}} por estudiante.</p>
+
+
+
+			</div>
+		</div>
+
+	</body>
+
+
+</html>

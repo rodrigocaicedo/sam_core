@@ -1,0 +1,467 @@
+
+{% load staticfiles %}
+{% load l10n %}
+{% load extras %}
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calificación para Subsidio Familiar - Añadir Representante</title>
+
+		<script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+		<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+		<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+		
+
+
+
+	</head>
+
+	<body style="background:white">
+
+	<div class = "container">
+		<div class="container page-header">
+      
+	        <div class="col-md-5 col-sm-3 col-xs-3" align="center">
+	          <img id = "logo-montebello" src="/static/logo.png" width="120" height="120">
+	        </div>
+	          
+	        <div class="col-md-7 col-sm-9 col-xs-9" align="right">
+	          <h1>Montebello Academy</h1>
+	          <h3>Calificación para Subsidio Familiar - Representante</h3>
+	          <h5>{{pedido.solicitante}} - {{pedido.email}}</h5>
+
+	        </div>
+		</div>
+
+		<div class = "container col-md-12">
+			{% if error%}
+			<div class="alert alert-danger" role="alert">{{error}}</div>
+			{% endif %}
+			{% if form.non_field.errors %}
+			{%for x in form.non_field.errors %}
+			<div class="alert alert-danger" role="alert">{{x}}</div>
+			{%endfor%}
+			{% endif %}			
+			<form class="form-horizontal" method = "post" id = "representante-form">
+				{% csrf_token %}
+				<div class="container col-md-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							INFORMACIÓN DEL REPRESENTANTE
+						</div>
+						<div class = "panel-body">
+							<div class="row">
+			
+
+								<div class="col-md-6">
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Nombres</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.nombres|add_attributes:"form-control,placeholder:Nombres completos"}}
+
+			                                	</div>
+            	                                {%if form.errors.nombres%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.nombres}}</small>
+                                				{%endif%}
+			                                </div>
+			                            </div>
+
+			                            <div class="form-group">
+
+											<label class="col-md-5 control-label">Apellido Paterno</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.apellido_paterno|add_attributes:"form-control,placeholder:Apellido Paterno"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.apellido_paterno%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.apellido_paterno}}</small>
+                                				{%endif%}
+			                                </div>
+			                            </div>
+
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Apellido Materno</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.apellido_materno|add_attributes:"form-control,placeholder:Apellido Materno"}}
+			                                	</div>
+            	                                {%if form.errors.apellido_materno%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.apellido_materno}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+										
+										<div class="form-group">
+											<label class="col-md-5 control-label">Número de Identificación</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.numero_id|add_attributes:"form-control,placeholder:Número de Identificación"}}
+			                                	</div>
+			                                </div>
+											
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">País de Nacimiento</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    		{{form.pais_nacimiento|add_attributes:"form-control"}}
+														
+			                                	</div>
+            	                                {%if form.errors.pais_nacimiento%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.pais_nacimiento}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Ciudad de Nacimiento</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.ciudad_nacimiento|add_attributes:"form-control,placeholder:Ciudad"}}
+			                                	</div>
+            	                                {%if form.errors.ciudad_nacimiento%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.ciudad_nacimiento}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Fecha de Nacimiento</label>
+
+											<div class="col-md-7 inputGroupContainer date">
+			                                	<div class="input-group input-append date">
+			                                    	<span class="input-group-addon add-on"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.fecha_nacimiento|add_attributes:"form-control"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.fecha_nacimiento%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.fecha_nacimiento}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Estado Civil</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.estado_civil|add_attributes:"form-control,placeholder:Estado Civil"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.estado_civil%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.estado_civil}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Número de Hijos</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.numero_hijos|add_attributes:"form-control,placeholder:Cantidad de Hijos"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.numero_hijos%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.numero_hijos}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Relación con Estudiante(s)</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    		{{form.relacion|add_attributes:"form-control"}}
+
+				                                	</div>
+				                                </div>
+            	                                {%if form.errors.relacion%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.relacion}}</small>
+                                				{%endif%}				                                
+											
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Nivel de Estudios</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    		{{form.nivel_estudios|add_attributes:"form-control"}}
+														
+
+			                                	</div>
+            	                                {%if form.errors.nivel_estudios%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.nivel_estudios}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Titulo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    		{{form.titulo|add_attributes:"form-control"}}
+														
+
+			                                	</div>
+            	                                {%if form.errors.nivel_estudios%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.nivel_estudios}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>										
+
+
+
+								</div>
+
+
+								<div class="col-md-6">
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Lugar de Trabajo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.lugar_trabajo|add_attributes:"form-control,placeholder:Nombre de Empresa"}}
+			                                    	
+			                                	</div>
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Dirección de Trabajo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.direccion_trabajo|add_attributes:"form-control,placeholder:Dirección del trabajo"}}
+			                                    	
+			                                	</div>
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Cargo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.cargo|add_attributes:"form-control,placeholder:Puesto o Cargo"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.cargo%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.cargo}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Tiempo de Trabajo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.tiempo_trabajo|add_attributes:"form-control,placeholder:Años en la organización"}}
+			                                    	
+			                                	</div>
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Teléfono del Trabajo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.telefono_trabajo|add_attributes:"form-control,placeholder:Ingrese 9 dígitos"}}
+			                                    	
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.telefono_trabajo%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.telefono_trabajo}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Correo del Trabajo</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.correo_trabajo|add_attributes:"form-control,placeholder:Ingrese su correo del trabajo"}}
+			                                    	
+			                                    </div>
+            	                                {%if form.errors.correo_trabajo%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.correo_trabajo}}</small>
+                                				{%endif%}			                                    
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group {% if form.errors.telefono_celular %}has-error{%endif%}">
+											<label class="col-md-5 control-label">Teléfono Celular</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.telefono_celular|add_attributes:"form-control,placeholder:Ingrese 10 dígitos"}}
+			                                	</div>
+            	                                {%if form.errors.telefono_celular%}
+            	                                {% if form.errors.telefono_celular %}<i class="form-control-feedback glyphicon-remove glyphicon" data-bv-icon-for="telefono_celular" style="display: block;"></i>{%endif%}
+
+                                    			<small data-bv-validator="notEmpty" data-bv-validator-for="telefono_celular" class="help-block" style="">{% for error in form.errors.telefono_celular %}{{error}}{%endfor%}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Operadora Celular</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.operadora_celular|add_attributes:"form-control"}}
+			                                    	
+			                                	</div>
+            	                                {%if form.errors.operadora_celular%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.operadora_celular}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+
+										<div class="form-group">
+											<label class="col-md-5 control-label">Teléfono de Domicilio</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.telefono_casa|add_attributes:"form-control,placeholder:Ingrese 9 dígitos"}}
+			                                	</div>
+            	                                {%if form.errors.nombres%}
+                                    			<small data-bv-telefono_casa="notEmpty" class="help-block" style="">{{form.errors.telefono_casa}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+									
+										<div class="form-group">
+											<label class="col-md-5 control-label">Correo Personal</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	{{form.correo_personal|add_attributes:"form-control,placeholder:Ingrese su correo personal"}}
+			                                	</div>
+            	                                {%if form.errors.correo_personal%}
+                                    			<small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.correo_personal}}</small>
+                                				{%endif%}			                                	
+			                                </div>
+											
+										</div>
+									
+								</div>
+							</div>
+
+
+							<div class = "row">
+
+				              <div class="form-group" align="center">
+
+
+				                <button type="submit" class="btn btn-success" value="Send">Guardar <span class="glyphicon glyphicon-new-window"></span></button>
+				                <a href="/socioeconomico/{{pedido.pk}}"><button type="button" class="btn btn-success" formnovalidate>Regresar <span class="glyphicon glyphicon-new-window"></span></button></a>
+
+				              </div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+			</form>
+
+		</div>
+
+		
+	</div>
+
+
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/socioeco_representante.js'%}"></script>
+
+
+	<script type ="text/javascript">
+
+	    $(document).ready(function(){
+	        var date_input=$('input[name="fecha_nacimiento"]'); //our date input has the name "date"
+	        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+	        date_input.datepicker({
+	            format: 'dd/mm/yyyy',
+	            container: container,
+	            todayHighlight: true,
+	            autoclose: true,
+	        })
+	    })
+
+
+	</script>
+
+	</body>
+
+</html>

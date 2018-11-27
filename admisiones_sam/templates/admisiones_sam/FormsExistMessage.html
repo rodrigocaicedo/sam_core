@@ -1,0 +1,90 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+
+    <title>Admisiones - Montebello Academy</title>
+
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+      <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">  
+    
+    
+  </head> 
+
+
+
+ <body>
+
+    <div class="container_fluid">
+    
+        <div class="container page-header">
+          
+            <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+              <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+              
+            <div class="col-md-8 col-sm-8 col-xs-8" align="right">
+              <h1>Montebello Academy</h>
+              <h3>Formulario de Información Secretaria Académica</h>
+            </div>
+        </div>
+        <div class="container well">
+            <div class="col-md-12">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <i class="fa fa-exclamation fa-5x"></i>
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 text-right">
+                              <div class="huge">Informativo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                      <p>El Formulario de Información para el Estudiante: <strong>{{valida.id_applications.name_student}} {{valida.id_applications.surname_student}} </strong>ya se encuentra registrado. </p>
+                       </br>
+                      <p>Para cualquier información comuniquese con el Departamento de Secretaria Académica al 26017070 ext. 1014</p>                    
+                     
+                      
+                     
+                       
+                            <!-- Button -->
+                            <div class="form-group">
+                              <label class="col-md-6 control-label"></label>
+                                <a href="https://www.montebelloacademy.org"   class="btn btn-warning" style="margin-top: 10px" >Aceptar <span class="glyphicon glyphicon-ok"></span></a>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ 
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>  
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+</body>
+</html>

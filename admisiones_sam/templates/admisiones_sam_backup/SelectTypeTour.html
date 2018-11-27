@@ -1,0 +1,137 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Admisiones - Montebello Academy</title>
+
+  <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">  
+    
+    
+    
+  </head> 
+
+
+ <body>
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Fecha de Tour Institucional</h>
+            </div>
+        </div>
+        <form class="well form-horizontal col-md-12" action="/admisiones/SeleccionaTour/" method="post"  id="contact_form">
+            <div class="container">
+                <div class "col-md-12">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <fieldset>
+                        <legend class="panel-heading">
+                            <strong data-bv-validator="notEmpty" class="help-block" style="color:red">Ya existe una aplicación con estos datos</strong>
+                    </legend>
+                    </fieldset>
+                    {% endif %}
+                </div>
+                <div class = "col-md-10" "col-sm-10" "col-xs-10">
+                    <fieldset class="panel panel-primary">
+                        <!-- Form Name -->
+                        <div class="panel-heading">TOUR INSTITUCIONAL</div>
+                        <div class="panel-body">
+                         
+                         <P>Montebello Academy realiza tours con grupos de padres de familia para que 
+                         reciban información importante del Colegio, y a la vez conozcan sus instalaciones.</p>
+                         <br>
+                         <p>Los Tours se realizan de 8:30 am a 10:00 am</P>
+                         <p>La asistencia es para los representantes, sin la presencia de estudiantes.</P>
+                         <p>Favor llegar con 15 minutos de anticipación</P>
+                        <br>
+                         <P> De no poder asistir al tour en las fechas propuestas, seleccione el campo "Otra Fecha" y comuniquese con el 
+                                Departamento de Admisiones al teléfono 6017070 ext 2 para agendar una nueva Fecha para el Tour.
+
+                         <br><br>
+                        <P>A continuación debe seleccionar la fecha en la que usted asistirá al Tour.<br></P>
+                        {{debug}}
+                        <br>
+                        {{form.id_applications}}
+                        {{form.estado}}
+                        {{form.errors.id_applications}}
+                        {{form.errors.estado}}
+                       
+                          <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label">Fecha Tour:</label>  
+                                <div class="col-md-4 inputGroupContainer date">
+                                <div class="input-group input-append date">
+                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                    <select class="form-control selectpicker" id="id_id_typetour" name="id_typetour">
+
+                                    
+                                    {% for x,y in form.fields.id_typetour.choices %}
+                                    <option value="{{ x }}">{{ y }}</option>
+                                    {% endfor %}
+                                    
+                                    </select>
+
+                                </div>
+                                </div>
+                            </div>
+                              <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label">Otra Fecha:</label>  
+                                <div class="col-md-8 inputGroupContainer date">
+                                <div class="input-group input-append date">
+                                   <!-- <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-calendar"></i></span>-->
+                                    <input type='checkbox' value=True name='otra_fecha' >
+                                   
+                                </div>
+                                </div>
+                            </div>
+                           
+                           
+                        </div>
+                                   
+
+                        <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label"></label>
+                          <div class="col-md-5">
+                            <button type="submit" class="btn btn-warning" style="margin-top: 10px" >Aceptar <span class="glyphicon glyphicon-send"></span></button>
+                          </div>
+                        </div>
+                        
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.container -->
+
+
+<script src="{% static "contact-form/js/jquery.min.js" %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <!-- <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script> -->
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+    
+</body>
+</html>

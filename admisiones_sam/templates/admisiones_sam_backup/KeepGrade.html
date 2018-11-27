@@ -1,0 +1,164 @@
+{% extends "gentelella/production/plain_page.html" %}
+
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+ {% block cabecera %}  
+    
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+
+  {% endblock%}  
+  
+  </head> 
+
+
+ <body>
+ 
+ {%block contenido %}
+ 
+ 
+    <div class="container-fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Niveles o Grados Escolares</h>
+            </div>
+        </div>
+    </div>    
+      
+   
+    <div class="container-fluid">
+        <div class="well  col-md-12 "  >        
+                <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                    <fieldset class="panel panel-primary">
+                      
+                        <div class="panel-heading">NIVELES O GRADOS REGISTRADOS</div>
+                        <div class="panel-body ">  
+                                {% if grados %}
+                                    <div class="table-responsive">
+                                     <div style="height:150px;overflow:auto;">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                   
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>Nombre Ministerio</th>
+                                                    <th>Nombre Colegio</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for x in grados %}
+                                                    <tr>
+                                                        <td><span class="pull-left"><a href="/admisiones/EditaGrados/{{x.id_typegrade}}/" class="icon-block"><i class="fa fa-pencil"></i></a></span></td>
+                                                        <td><span class="pull-left"><a href="/admisiones/EliminaGrados/{{x.id_typegrade}}/" class="icon-block"><i class="fa fa-trash"></i></a></span></td>
+                                                        <td>{{x.typegrade}}</td>
+                                                        <td>{{x.typeschool}}</td>
+                                                        
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    No se han registrado Niveles o Grados Escolares.
+                                {% endif %} 
+                               
+                                   
+                        </div>
+                    </fieldset>
+                </div>
+                <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                        <fieldset class="panel panel-primary">
+                            <div class="panel-heading">NUEVOS NIVELES O GRADOS ESCOLARES</div>
+                                <div class="panel-body"> 
+                                    <form class="form-horizontal col-md-12" action="/admisiones/MantenerGrados/" method="post">
+                                        {% csrf_token %}  
+                                        
+                                     
+                                            <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Grado Ministerio:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                                {{form.typegrade|add_attributes:"form-control,placeholder:Nivel o Grado según Ministerio"}}
+                                            </div>
+                                             {%if form.errors.typegrade%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.typegrade}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Grado Colegio:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                                {{form.typeschool|add_attributes:"form-control,placeholder:Nivel o Grado según Colegio"}}
+                                            </div>
+                                             {%if form.errors.typeschool%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.typeschool}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>
+                                         
+                                             <!-- Button -->
+                                            <div class="form-group">
+                                                <div class="row"> 
+                                                    <label class="col-md-5 control-label"></label>
+                                                        <button type="submit" class="btn btn-warning" style="margin-top: 10px"  >Crear <span class="glyphicon glyphicon-ok"></span></button>
+                                                        <a href="/admisiones/Inicio/" class="btn btn-warning" style="margin-top: 10px" >Cancelar <span class="glyphicon glyphicon-stop"></span></a>
+                                                </div>
+                                            </div>
+                                    </form> 
+                                    
+                                </div>
+                        </fieldset>
+                </div>
+                 
+            </div>
+       
+    
+    </div><!-- /.container -->
+    
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+    
+    
+    <script>
+      $(function() {
+        $("#id_q_aplicante").autocomplete({
+          source: "/admisiones/ListaAplicantes/",
+          minLength: 2,
+        });
+      });
+    </script>
+    {% endblock %}
+   {% endblock %}
+  
+</body>
+</html>

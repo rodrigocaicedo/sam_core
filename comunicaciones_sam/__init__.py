@@ -1,0 +1,1 @@
+default_app_config = 'comunicaciones_sam.apps.ComunicacionesSamConfig'

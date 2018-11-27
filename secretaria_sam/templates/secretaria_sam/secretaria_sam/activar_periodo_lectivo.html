@@ -1,0 +1,55 @@
+{% extends "gentelella/production/plain_page.html" %}
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+ {% block cabecera %}  
+    
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+
+  {% endblock%}  
+
+ 
+   </head> 
+
+
+ <body>
+ {%block contenido %}
+
+
+<form method = "POST">
+
+<select>
+{% for x in periodos%}
+<option value="{{x.pk}}">{{x}}</option>
+{% endfor %}
+</select>
+
+</form>
+
+{% endblock %}
+ {% block scripts %}
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+  {% endblock %}
+
+   
+    
+</body>
+</html>

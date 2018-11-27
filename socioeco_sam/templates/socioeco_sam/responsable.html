@@ -1,0 +1,175 @@
+
+{% load staticfiles %}
+{% load l10n %}
+{% load extras %}
+
+
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calificación para Subsidio Familiar - Añadir Responsable de Gastos Educativos</title>
+
+		<script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+		<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+		<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+		
+
+
+
+	</head>
+
+	<body style="background:white">
+
+	<div class = "container">
+		<div class="container page-header">
+      
+	        <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+	          <img id = "logo-montebello" src="/static/logo.png" width="120" height="120">
+	        </div>
+	          
+	        <div class="col-md-9 col-sm-9 col-xs-9" align="right">
+	          <h1>Montebello Academy</h1>
+	          <h3>Calificación para Subsidio Familiar - Responsable de Gastos Educativos</h3>
+	          <h5>{{pedido.solicitante}} - {{pedido.email}}</h5>
+
+	        </div>
+		</div>
+
+		<div class = "container col-md-12">
+			<form class="form-horizontal" method = "post" id = "domicilio-form">
+				{% csrf_token %}
+				<div class="container col-md-12">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							INFORMACIÓN DEL RESPONSABLE DE LOS GASTOS EDUCATIVOS
+						</div>
+
+						<div class = "panel-body">
+							<div class="row">
+
+								<div class="col-md-6">
+									
+										<div class="form-group">
+											<label class="col-md-4 control-label">Elija el responsable de los gastos educativos de los estudiantes:</label>
+											<div class="col-md-8 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	<select name="responsable_gastos" class="form-control" id="id_responsable_gastos" required>
+			                                    		  <option value="">---------</option>
+			                                    		{% for representante in pedido.representante_set.all %}
+														  <option {% if representante.nombres in pedido.responsable_gastos.responsable_gastos and representante.apellido_paterno in pedido.responsable_gastos.responsable_gastos and representante.relacion in pedido.responsable_gastos.responsable_gastos%} selected {% endif %} value="{{representante.nombres}} {{representante.apellido_paterno}} - {{representante.relacion}}">{{representante.nombres}} {{representante.apellido_paterno}} - {{representante.relacion}}</option>
+														{%endfor%}
+														  <option value="Otro">Otro*</option>
+
+													</select>
+
+			                                	</div>
+			                                </div>
+											
+										</div>
+								</div>
+								<div class="col-md-6" id = "id_especifique" style="display:none;">
+
+			                            <div class="form-group">
+											<label class="col-md-5 control-label">Nombres Completos</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	<input type="text" name="responsable_2" id="id_responsable_2" class="form-control">
+			                                    	
+			                                	</div>
+
+			                                </div>
+			                            </div>
+			                            <div class="form-group">
+			                                <label class="col-md-5 control-label">Relación</label>
+											<div class="col-md-7 inputGroupContainer">
+			                                	<div class="input-group">
+			                                    	<span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+			                                    	<input type="text" name="responsable_3" id="id_responsable_3" class="form-control">
+			                                    	
+			                                	</div>
+			                                </div>
+										</div>										
+									
+
+								</div>
+
+
+							</div>
+							<div class = "row">
+								<br>
+							</div>
+
+							<div class = "row">
+
+				              <div class="form-group" align="center">
+
+
+				                <button type="submit" class="btn btn-success" value="Send">Guardar <span class="glyphicon glyphicon-new-window"></span></button>
+				                <a href="/socioeconomico/{{pedido.pk}}"><button type="button" class="btn btn-success" formnovalidate>Regresar <span class="glyphicon glyphicon-new-window"></span></button></a>
+				              </div>
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				
+			</form>
+
+		</div>
+
+		
+	</div>
+
+
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+
+    
+    <script>
+
+		$('#id_responsable_gastos').change(function(){
+			if($('#id_responsable_gastos').val() == "Otro"){
+				$('#id_especifique').show();
+				$('#id_responsable_2').prop('required',true);
+				$('#id_responsable_3').prop('required',true);
+			}else{
+				$('#id_especifique').hide();
+				$('#id_responsable_2').prop('required',false);
+				$('#id_responsable_3').prop('required',false);
+			}
+			
+
+	    });
+
+    </script>    
+
+
+	</body>
+
+</html>

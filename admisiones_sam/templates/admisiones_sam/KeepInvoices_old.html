@@ -1,0 +1,228 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+
+    <title>Administración - Montebello Academy</title>
+
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">  
+    
+  </head> 
+
+
+ <body>
+ 
+ 
+ 
+ 
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Administración - Datos Facturación</h>
+            </div>
+        </div>
+        
+      
+        <div class="well  col-md-12"  >    
+            
+            <div class="container">
+                
+                    <div class = "col-md-10" "col-sm-10" "col-xs-10">
+                            <fieldset class="panel panel-primary">
+                                
+                                <div class="panel-heading">PARÁMETROS DE CONSULTA</div>
+                                <div class="panel-body">
+                                <form class="  form-horizontal col-md-12" action="/admisiones/MantenerFacturas/" method="get"
+                                    {{debug}}
+                                    <div class="row"> 
+                                        <!-- Text input-->
+                                        <div class="form-group col-md-9 col-sm-9 col-xs-9">
+                                            <label class="col-md-2 control-label" for="id_estudiante">Aplicante:</label>  
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-user" style="width:20px"></i></span>
+                                                    <input type="text" class ="form-control" name="q_aplicantes" id="id_q_aplicantes" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                          <div class="form-group">
+                                          <div class="col-md-2">
+                                           <button type="submit" name='submit' class="btn btn-warning" style="margin-top: 10px" >Buscar <span class="glyphicon glyphicon-search"></span></button>
+                                          </div>
+                                        </div>
+                                       
+                                     </div>
+                                </form>                               
+                                </div>
+                            </fieldset>
+                    </div>
+                            
+                    
+                    <div class = "col-md-10" "col-sm-10" "col-xs-10">
+                        <fieldset class="panel panel-primary">
+                            <div class="panel-heading">NUEVOS REGISTROS DE FACTURACIÓN</div>
+                                <div class="panel-body"> 
+                                    <form class="form-horizontal col-md-12" action="/admisiones/MantenerFacturas/{{1}}/" method="post">
+                                        {% csrf_token %}  
+                                        {{identificacion}}
+                                         {{form.errors.id_application_id}}
+                                         
+                                    
+                                        <div class="row">     
+                                          
+                                        
+                                          <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Nombres:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                                {{form.name|add_attributes:"form-control,placeholder:Nombres para factura"}}
+                                            </div>
+                                             {%if form.errors.name%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.name}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Apellidos:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                                {{form.surname|add_attributes:"form-control,placeholder:Apellidos para factura"}}
+                                            </div>
+                                             {%if form.errors.surname%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.surname}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Número Identificación:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-credit-card" ></i></span>
+                                                {{form.identity_card|add_attributes:"form-control,placeholder:Número de Identificación"}}
+                                            </div>
+                                             {%if form.errors.identity_card%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.identity_card}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Dirección:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-files-o" ></i></span>
+                                                {{form.address|add_attributes:"form-control,placeholder:Dirección"}}
+                                            </div>
+                                             {%if form.errors.address%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.address}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div> 
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Teléfono:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-phone" ></i></span>
+                                                {{form.phone|add_attributes:"form-control,placeholder:Ejemplo 022345678"}}
+                                            </div>
+                                             {%if form.errors.phone%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.phone}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div> 
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Celular:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-mobile" ></i></span>
+                                                {{form.cell|add_attributes:"form-control,placeholder:Ejemplo 0990909090"}}
+                                            </div>
+                                             {%if form.errors.cell%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.cell}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>   
+                                        
+                                         <div class="form-group">
+                                            <label class="col-md-3 control-label">Mail:</label>  
+                                            <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-mail" ></i></span>
+                                                {{form.mail|add_attributes:"form-control,placeholder:Mail"}}
+                                            </div>
+                                             {%if form.errors.mail%}
+                                                <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.mail}}</small>
+                                            {%endif%}
+                                            </div>
+                                        </div>   
+                                        </div>
+                                         
+                                             <!-- Button -->
+                                            <div class="form-group">
+                                                <div class="row"> 
+                                                    <label class="col-md-4 control-label"></label>
+                                                        <button type="submit" class="btn btn-warning" style="margin-top: 10px"  >Actualizar <span class="glyphicon glyphicon-ok"></span></button>
+                                                        <a href="/admisiones/Administracion/" class="btn btn-warning" style="margin-top: 10px" >Cancelar <span class="glyphicon glyphicon-stop"></span></a>
+                                                </div>
+                                            </div>
+                                    </form> 
+                                    
+                                </div>
+                        </fieldset>
+                    </div>
+                 
+            </div>
+        </div> 
+    
+    </div><!-- /.container -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+    
+     <script>
+      $(function() {
+        $("#id_q_aplicantes").autocomplete({
+          source: "/admisiones/ListaAplicantes/",
+          minLength: 2,
+        });
+      });
+    </script>
+    
+   
+  
+</body>
+</html>

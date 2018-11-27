@@ -1,0 +1,119 @@
+{% load extras %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title>Aceptar Términos y Condiciones</title>
+
+    {{ form.media }}
+
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+    <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+    
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+    
+      <div class="container page-header">
+      
+        <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+          <img src="{% static 'logo.png' %}" width="120" height="120">
+        </div>
+          
+        <div class="col-md-9 col-sm-9 col-xs-9" align="right">
+            <h1>Montebello Academy</h1>
+            <h3>Calificación para Subsidio Familiar</h3>
+
+        </div>
+      </div>
+      <div class="container well">
+        <div class="col-md-12">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                  <i class="fa fa-warning fa-5x"></i>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 text-right">
+                  <div class="huge">{% ifequal pedido.motivo_solicitud "Proceso de Admisiones" %}Instrucciones para llenar el Formulario{% else %}Términos y Condiciones{% endifequal %}</div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+{% ifequal pedido.motivo_solicitud "Proceso de Admisiones" %}
+<p>Para empezar el proceso, es necesario presionar el botón al final de esta pantalla.
+<br><br>
+Ingrese toda la información requerida en cada sección de la siguiente pantalla. Si usted necesita salir y reingresar al formulario para editar o completar los datos faltantes, puede hacerlo mediante el enlace enviado a su correo electrónico.
+<br><br>
+Una vez concluido el proceso de ingreso de información, presione el botón "Finalizar y Enviar". Hecho esto, ya no podrá editar ningún dato.
+<br><br>
+La Fundación Its About Kids mantendrá la confidencialidad y reserva absoluta de la información recibida.
+<br><br>
+Si tiene alguna inquietud sobre el ingreso de información, comunicarse con Ximena Moncayo al teléfono 6017070 ext.1011.
+</p><br>
+{% else %}
+<p>El uso de este formulario implica la aceptación de las condiciones y términos expresados a continuación. Para empezar el proceso, es necesario que declare conocer esta información presionando el botón al final de esta pantalla.<br><br>
+Ingrese toda la información requerida en cada sección de la siguiente pantalla.  Si usted necesita salir y reingresar al formulario para editar o completar los datos faltantes, puede hacerlo mediante el enlace enviado a su correo electrónico.<br><br>
+Una vez concluido el proceso de ingreso de información, presione el botón "Finalizar y Enviar". Hecho esto, ya no podrá editar ningún dato.<br><br>
+
+Al finalizar el proceso, recibirá en su correo electrónico un mensaje con el resumen de la información ingresada. Por favor imprima este documento y envíe al Departamento Financiero en un sobre manila junto a todos los respaldos que se solicitan al finalizar el registro, para certificar la validez de los datos ingresados.<br><br>
+
+Es importante recordar que, al proporcionar toda esta información, usted autoriza a la Fundación Its About Kids obtener cualquier tipo de referencias personales y/o patrimoniales, anteriores o posteriores a la suscripción de esta autorización.<br><br>
+
+La revisión de los valores correspondientes al <strong>subsidio</strong> mensual de el o los estudiantes referidos en este formulario, serán realizados en un plazo máximo de 30 días y notificados oportunamente a usted, por medio electrónico y/o telefónico.<br><br>
+
+Cabe indicar que el proceso de calificación tiene el fin de revisar exclusivamente el valor de <strong>subsidio</strong> mensual de su/s representado/s, cualquier otro valor relacionado con el costo de la educación, no está sujeto de revisión en este proceso.<br><br>
+
+La Fundación Its About Kids mantendrá la confidencialidad y reserva absoluta de la información recibida.<br><br>
+
+En caso de detectar que la información entregada es falsa, la solicitud será anulada automáticamente y perderá el subsidio que actualmente recibe.<br><br>
+
+Usted ha leído y comprendido lo detallado en los términos y condiciones para el ingreso de la calificación para el subsidio familiar.</p><br>{% endifequal %}
+
+
+
+            <div align="center">
+                  <a href="/socioeconomico/{{pedido.pk}}/confirmar"><button type="button" class="btn btn-success" formnovalidate>Aceptar y Continuar <span class="glyphicon glyphicon-new-window"></span></button></a>
+            
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+    <script src="{% static 'contact-form/js/jquery.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+  </body>
+</html>

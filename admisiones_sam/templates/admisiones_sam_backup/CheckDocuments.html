@@ -1,0 +1,239 @@
+{% extends "gentelella/production/plain_page.html" %}
+
+{% load staticfiles %}
+{% load extras %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   {% block cabecera %}
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'contact-form/css/ventana.css' %}" rel="stylesheet" type="text/css">
+
+   {% endblock%}  
+
+  </head> 
+
+
+ <body>
+{%block contenido %}
+
+
+
+
+    <div class="container_fluid">
+        <div>
+            <table>
+                <tr>
+
+                {% for x in detalle %}
+                <td>
+                <div id="{{x.pk}}_myModal" class="modal">
+                <span class="close" id = "close_{{x.pk}}" onclick="document.getElementById('{{x.pk}}_myModal').style.display='none'">&times;</span>
+                <img class="modal-content" id="img01" src="/uploads/{{x.file}}">
+
+                <div id="caption"></div>
+                </div>
+                </td>
+                {% endfor %}
+                </tr>
+            </table>
+        </div>
+        
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Validación de Documentos</h>
+            </div>
+        </div>
+        <div class="well col-md-12">
+            <div class="container">
+                <form class="form-horizontal col-md-12" action="/admisiones/ValidaDocumentos/" method="get" >
+                  
+                      
+                    <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                        <fieldset class="panel panel-primary">
+                            
+                            <div class="panel-heading">PARÁMETROS DE CONSULTA</div>
+                            <div class="panel-body">
+                                <div class="row"> 
+                                    <!-- Text input-->
+                                    <div class="form-group ">
+                                        <label class="col-md-2 control-label" for="id_estudiante">Aplicante:</label>  
+                                        <div class="col-md-4 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user" style="width:20px"></i></span>
+                                                <input type="text" class ="form-control" name="q_aplicantes" id="id_q_aplicantes" value='{{aplicante}}'>
+                                                <!--value='{{aplicante}}' >-->
+                                            </div>
+                                        </div>
+                                        <label class="col-md-1 control-label"></label>
+                                        <div class="col-md-2">
+                                            <button type="submit" name='submit' class="btn btn-warning" style="margin-top: 10px" >Buscar <span class="glyphicon glyphicon-search"></span></button>
+                                            <a href="/admisiones/Inicio/" class="btn btn-warning" style="margin-top: 10px" >Cancelar <span class="glyphicon glyphicon-stop"></span></a>
+                                        </div>
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+                <form class="form-horizontal col-md-12" action="/admisiones/ValidaDocumentos/" method="post" >
+                 {% csrf_token %} 
+                    <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                        <fieldset class="panel panel-primary">
+                            <div class="panel-heading">DOCUMENTOS CARGADOS AL SISTEMA</div>
+                            <div class="panel-body">
+    
+
+                                
+                                
+                               {% if detalle %}
+                               
+                                <div class="table-responsive">
+                              
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <!--<th></th>-->
+                                                    <th></th>
+                                                    <th>Tipo Documento</th>
+                                                    <th>Archivo</th>
+                                                     <th></th>
+                                                    <th>Estado</th>
+                                                    <th>Observaciones</th>
+                                                   
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody >
+                                                {% for x in detalle %}
+                                                    <tr>
+                                                        
+                                                        <td><a href="/admisiones/CorrigeDocumentos/{{x.id_detdoc}}/" class="btn btn-primary" style="margin-top: 10px" >Validar <span class="glyphicon glyphicon-start"></span></a></td>
+                                                        <td>{{x.id_doctype}}</td>
+                                                        <!--<td><a HREF="/uploads/{{x.file}}" target="_blank"> {%if not x.file %}------ {%else%}{{x.file}}{%endif%}</a></td>-->
+                                                        <td><a href = "/uploads/{{x.file}}" target="_blank">{{x.file}}</a></td>
+                                                       
+                                                        <!--imagen-->
+                                                       <td> 
+                                                            <!--<span id ="{{x.pk}}" alt={{x.id_doctype}} width="50" height="20" class="ojo pull-left"><a class="icon-block"><i class="fa fa-eye"></i></a></span>-->
+                                                            <a class="icon-block" href="/uploads/{{x.file}}" target="_blank"><i class="fa fa-eye"></i></a>
+
+                                                            <!--<img id="myImg" src="/uploads/img_dia.jpg" alt={{x.id_doctype}} width="50" height="20">-->
+                                                            
+                                                        </td>
+                                                       
+
+                                                       <td> {%if not x.state %}No Validado {%else%}Validado{%endif%}</td>
+                                                       <td> <input type="text" name="{{x.pk}}" id="option{{x.observaciones}}" value="{{x.observations}}"  ></td>
+                                                       <!--value={{x.id_detdoc}}-->
+                                                      
+                                                    </tr>
+                                                {% endfor %}
+                                               
+                                            </tbody>
+                                            
+                                        </table>
+                                    
+                                </div>
+                                {% else %}
+                                    No se ha encontrado documentos cargados al sistema.
+                                {% endif %}
+                           
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                
+                
+                <div class="form-group">
+                        <label class="col-md-5 control-label"></label>
+                            <button type="submit" class="btn btn-warning" style="margin-top: 10px"  >Actualizar Observaciones<span class="glyphicon glyphicon-ok"></span></button>
+                             <a href="/admisiones/DocumentosPorValidar/" class="btn btn-warning" style="margin-top: 10px" >Regresar <span class="glyphicon glyphicon-stop"></span></a>
+                            <!--<button type="cancel" class="btn btn-warning" style="margin-top: 10px" formaction="/admisiones/Inicio/" method="get"  >Regresar <span class="glyphicon glyphicon-stop"></span></button>-->
+                                                
+                </div> 
+                </form> 
+            </div>
+        
+               
+
+        </div>   
+    
+    </div>
+        
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+     <!--<script src="{% static 'contact-form/js/ventana.js' %}" type="text/javascript"></script>-->
+     
+    <script>
+      $(function() {
+        $("#id_q_aplicantes").autocomplete({
+          source: "/admisiones/ListaAplicantes/",
+          minLength: 2,
+        });
+      });
+    </script>
+    
+    {% for x in detalle %}
+    <script>
+    // Get the modal
+    var modal_{{x.pk}} = document.getElementById('{{x.pk}}_myModal');
+    var span_{{x.pk}} = document.getElementById("close_{{x.pk}}");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    //var img = document.getElementsByClassName("ojo")[0];
+    var img = document.getElementById('{{x.pk}}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal_{{x.pk}}.style.display = "block";
+        document.getElementById("id_q_aplicantes").style.display = "none";
+        //modalImg.src = this.src;
+        //captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    
+
+    // When the user clicks on <span> (x), close the modal
+    span_{{x.pk}}.onclick = function() { 
+      modal_{{x.pk}}.style.display = "none";
+      document.getElementById("id_q_aplicantes").style.display = "block";
+    }
+    </script>
+    {% endfor %}
+    
+{% endblock %}
+   
+    
+</body>
+</html>

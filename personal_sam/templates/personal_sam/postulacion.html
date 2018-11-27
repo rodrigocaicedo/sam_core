@@ -1,0 +1,358 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Talento Humano - Montebello Academy</title>
+
+  <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">  
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="{% static 'bootstrapvalidator-master/vendor/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrapvalidator-master/dist/css/bootstrapValidator.css' %}"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <link href="{% static 'jquery_filer/css/jquery.filer.css' %}" type="text/css" rel="stylesheet" />
+    <link href="{% static 'jquery_filer/css/themes/jquery.filer-dragdropbox-theme.css' %}" type="text/css" rel="stylesheet" />
+
+    <!--jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="{% static 'jquery_filer/js/jquery.filer.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery_filer/js/conf_postulaciones.js' %}"></script>
+
+
+
+
+
+
+
+
+    
+    <style>
+        .file_input{
+            display: inline-block;
+            padding: 10px 16px;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            white-space: nowrap;
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+            color: #008BFF;
+            border: 1px solid #008BFF;
+            vertical-align: middle;
+            background-color: #fff;
+            margin-bottom: 10px;
+            box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+        .file_input:hover,
+        .file_input:active {
+            background: #008BFF;
+            color: #fff;
+        }
+    </style>
+    
+  </head> 
+
+
+ <body>
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Formulario para Postulación de Personal</h>
+            </div>
+        </div>
+        <form class="well form-horizontal col-md-12" method="post"  enctype="multipart/form-data" id="contact_form">
+        {% csrf_token %}
+            <div class="container">
+                <div class "col-md-12">
+
+                </div>
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <!-- Form Name -->
+                        <div class="panel-heading">INFORMACIÓN PERSONAL</div>
+                        <div class="panel-body">
+                    
+                        {{form.errors.type_student}}
+                        {{form.errors.date_application}}
+                             
+                             
+                            <!-- Text input-->
+                            <div class="form-group">
+
+                                <label class="col-md-4 control-label">Apellidos:</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input type="text" name="apellidos" id="id_apellidos" required="" placeholder="Paterno y Materno" class="form-control" data-bv-field="apellidos">
+                                    </div>
+                                </div>
+
+                           </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nombres:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                        <input type="text" name="nombres" id="id_nombres" required="" placeholder="Nombres completos" class="form-control" data-bv-field="nombres">
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label">Correo Electrónico:</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-envelope"></i></span>
+                                    <input type="email" name="correo" id="id_correo" required="" placeholder="Dirección de correo electrónico" class="form-control" data-bv-field="correo">
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label">Teléfono:</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input type="text" name="telefono" required="" class="form-control" placeholder="Fijo o celular" id="id_telefono" maxlength="10">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="id_adjunto" class="col-md-4 control-label">Hoja de Vida</label>
+
+                        <div class="col-md-8 inputGroupContainer">
+
+                      <!--<a class="file_input" data-jfiler-name="files" data-jfiler-extensions="jpg, jpeg, png, gif, pdf, docx, doc"><i class="icon-jfi-paperclip"></i> Adjuntar archivos</a>-->
+                            <a class="file_input2" id = "input1" data-jfiler-name="files" data-jfiler-extensions="pdf, docx, doc" style="border:0; padding:0;"><button type="button" class="btn btn-success" formnovalidate>Adjuntar <span class="glyphicon glyphicon glyphicon-paperclip"></span></button></a>
+                        </div>
+
+                    </div>
+
+
+
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">PUESTO AL QUE APLICA</div>
+                            <div class="panel-body">
+                                 
+                                 <!-- Text input-->
+                                 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Sección:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                            <select name="seccion" required="" class="form-control selectpicker" id="id_seccion" data-bv-field="seccion">
+                                              <option value="" selected="">---------</option>
+                                              <option value="Preescolar">Preescolar</option>
+                                              <option value="Primaria">Primaria</option>
+                                              <option value="Secundaria">Secundaria</option>
+                                              <option value="Administración">Administración</option>
+                                              <option value="Otro">Otro</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                 <!-- Text input-->
+                                 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Área:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                            <select name="area" required="" class="form-control selectpicker" id="id_area" data-bv-field="area">
+                                              <option value="" selected="">---------</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>   
+
+                                 <!-- Text input-->
+                                 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Comentarios:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                        <div class="input-group">
+                                            
+                                            <textarea name="comentarios" required="" class="form-control selectpicker" id="id_comentarios" data-bv-field="comentarios" rows="6" cols="100%"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>    
+
+            
+                            </div>
+                    </fieldset>
+               
+
+                    <fieldset>
+                    
+                    
+                    <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label"></label>
+                          <div class="col-md-4">
+                            <button type="submit" class="btn btn-warning" style="margin-top: 10px" >Continuar <span class="glyphicon glyphicon-new-window"></span></button>
+                          </div>
+                        </div>
+                                               
+
+                    </fieldset>
+                </div>
+
+            </div>
+        </form>
+    </div><!-- /.container -->
+
+
+    <!--<script src="{% static 'contact-form/js/jquery.min.js' %}"></script>-->
+
+    <!--<script type="text/javascript" src="{% static 'bootstrapvalidator-master/vendor/jquery/jquery.min.js' %}"></script>-->
+    <script type="text/javascript" src="{% static 'bootstrapvalidator-master/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrapvalidator-master/dist/js/bootstrapValidator.js' %}"></script>
+
+
+
+
+    <!--<script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>-->
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/postulaciones.js'%}"></script>
+
+<script>
+    $(document).ready(function(){
+
+        $('#id_seccion').on('change',function(){
+            $('option', '#id_area').remove();
+            $('#id_area').append($('<option>', {
+                selected:"",
+                value:"",
+                text:"---------"
+            }));
+            if($('#id_seccion').val() == "Preescolar"){
+                var items = {option1:{value:"English Teacher",text:"English Teacher"},option2:{value:"Profesor parvulario",text:"Profesor parvulario"}, option3:{value:"Profesor de psicomotricidad",text:"Profesor de psicomotricidad"}, option4:{value:"Asistente parvulario",text:"Asistente parvulario"}, option5:{value:"Otro",text:"Otro"}};
+                $.each(items, function (i, item) {
+                    $('#id_area').append($('<option>', { 
+                        value: item.value,
+                        text : item.text 
+                    }));
+                });
+            } else if($('#id_seccion').val() == "Primaria"){
+                var items = {option1:{value:"Science Teacher (English)",text:"Science Teacher (English)"},option2:{value:"English Language Arts Teacher",text:"English Language Arts Teacher"}, option3:{value:"Social Studies Teacher (English)",text:"Social Studies Teacher (English)"}, option4:{value:"English Co-teacher",text:"English Co-teacher"}, option5:{value:"Profesor de Lenguaje",text:"Profesor de Lenguaje"}, option6:{value:"Profesor de Ciencias Naturales", text:"Profesor de Ciencias Naturales"}, option7:{value:"Profesor de Matemática", text:"Profesor de Matemática"}, option8:{value:"Profesor de Estudios Sociales", text:"Profesor de Estudios Sociales"}, option9:{value:"Profesor de Arte", text:"Profesor de Arte"}, option10:{value:"Profesor de Música", text:"Profesor de Música"}, option11:{value:"Profesor de Educación Física", text:"Profesor de Educación Física"}, option12:{value:"Profesora asistente de Aula", text:"Profesora asistente de Aula"}, option13:{value:"Profesor de Biblia", text:"Profesor de Biblia"}, option14:{value:"Otro", text:"Otro"}};
+                $.each(items, function (i, item) {
+                    $('#id_area').append($('<option>', { 
+                        value: item.value,
+                        text : item.text 
+                    }));
+                });
+
+            } else if($('#id_seccion').val() == "Secundaria"){
+                var items = {option1:{value:"Science Teacher (English)",text:"Science Teacher (English)"},option2:{value:"English Language Arts Teacher",text:"English Language Arts Teacher"}, option3:{value:"Social Studies Teacher (English)",text:"Social Studies Teacher (English)"}, option4:{value:"Profesor de Lengua y Literatura",text:"Profesor de Lengua y Literatura"}, option5:{value:"Profesor de Matemática", text:"Profesor de Matemática"}, option6:{value:"Profesor de Arte", text:"Profesor de Arte"}, option7:{value:"Profesor de Música", text:"Profesor de Música"}, option8:{value:"Profesor de Educación Física", text:"Profesor de Educación Física"}, option9:{value:"Profesor de Biblia", text:"Profesor de Biblia"}, option10:{value:"Otro", text:"Otro"}};                
+                $.each(items, function (i, item) {
+                    $('#id_area').append($('<option>', { 
+                        value: item.value,
+                        text : item.text 
+                    }));
+                });
+
+            } else if($('#id_seccion').val() == "Administración"){
+                var items = {option1:{value:"Contabilidad",text:"Contabilidad"},option2:{value:"Marketing y comunicaciones",text:"Marketing y comunicaciones"}, option3:{value:"Admisiones",text:"Admisiones"}, option4:{value:"Talento humano",text:"Talento humano"},option5:{value:"Secretaría",text:"Secretaría"},option6:{value:"Seguridad y salud ocupacional",text:"Seguridad y salud ocupacional"},option7:{value:"Departamento médico",text:"Departamento médico"},option8:{value:"Capellanía",text:"Capellanía"},option9:{value:"Psicología",text:"Psicología"},option10:{value:"Sistemas",text:"Sistemas"},option11:{value:"Mantenimiento",text:"Mantenimiento"},option12:{value:"Otro",text:"Otro"}};
+                $.each(items, function (i, item) {
+                    $('#id_area').append($('<option>', { 
+                        value: item.value,
+                        text : item.text 
+                    }));
+                });
+
+
+            } else if($('#id_seccion').val() == "Otro"){
+                $('#id_area').append($('<option>', {
+                    value: "Otro",
+                    text: 'Otro',
+                    selected:""
+                }));    
+            };
+            $("#contact_form").data("bootstrapValidator").revalidateField('area');
+
+        });
+
+
+
+
+    })
+
+
+
+
+</script>
+ 
+   
+    
+</body>
+</html>

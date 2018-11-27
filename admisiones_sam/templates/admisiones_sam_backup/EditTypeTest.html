@@ -1,0 +1,190 @@
+{% extends "gentelella/production/plain_page.html" %}
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+
+    {% block cabecera %}  
+ 
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    {% endblock%} 
+
+
+
+  </head> 
+
+
+ <body>
+ {%block contenido %}
+<div class="container_fluid">
+       <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Fechas de Evaluaciones</h>
+            </div>
+        </div>
+        
+        
+          
+    <div class="well col-md-12"> 
+        <div class="container">
+           
+                      
+            <div class="row">    
+                <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                    <fieldset class="panel panel-primary">
+                            <div class="panel-heading">EDITAR FECHAS DE EVALUACIONES</div>
+                            
+                             
+                                <div class="panel-body">
+                                
+                                    <form class="form-horizontal col-md-12"  action="/admisiones/EditaTipoTest/{{Tipos.id_typetest}}/" method="post">
+         
+                                        {% csrf_token %}   
+                                               
+                                         <div class="row">     
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Fecha Evaluación:</label>  
+                                                <div class="col-md-3 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                                    {{form.date_test|add_attributes:"form-control datepicker"}} 
+                                                </div>
+                                                  {%if form.errors.date_test%}
+                                                    <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.date_test}}</small>
+                                                {%endif%}
+                                                </div>
+                                           
+                                                <label class="col-md-1 control-label">Hora:</label>  
+                                                <div class="col-md-2 inputGroupContainer ">
+                                                <div class="input-group input-append ">
+                                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-clock-o"></i></span>
+                                                    {{form.time_test|add_attributes:"form-control ,placeholder:Hora Evaluación"}}
+                                                </div>
+                                                 {%if form.errors.time_test%}
+                                                    <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.time_test}}</small>
+                                                {%endif%}
+                                                </div>
+                                            </div>
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Grado:</label>  
+                                                <div class="col-md-3 inputGroupContainer ">
+                                                    <div class="input-group input-append ">
+                                                        <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-list"></i></span>
+                                                        <!-- {{form.grade|add_attributes:"form-control"}}-->
+                                                    <select class="form-control selectpicker" id="grade" name="grade">
+                                                        <option value="" >---------</option>
+                                                        
+                                                        {% for x in lista %}
+                                                        <option value="{{ x }}" {%ifequal form.grade.value x%}selected="selected" {%endifequal%}>{{ x }}</option>
+                                                       
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                   <!-- {{form.grade}}-->
+                                                    </div>
+                                                </div>
+                                           
+                                                <label class="col-md-1 control-label">Profesor:</label>  
+                                                <div class="col-md-2 inputGroupContainer ">
+                                                <div class="input-group input-append ">
+                                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-user"></i></span>
+                                                    {{form.teacher|add_attributes:"form-control,placeholder:Profesor Encargado"}}
+                                                </div>
+                                                 {%if form.errors.teacher%}
+                                                    <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.teacher}}</small>
+                                                {%endif%}
+                                                </div>
+                                            </div>
+                                        
+                                         
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Tipo:</label>  
+                                                <div class="col-md-3 inputGroupContainer ">
+                                                <div class="input-group input-append ">
+                                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-list"></i></span>
+                                                    <select class="form-control selectpicker" id="type_test" name="type_test">
+                                                        <option value="" >---------</option>
+                                                        
+                                                        {% for x in tipo %}
+                                                        <option value="{{ x }}" {%ifequal form.type_test.value x%}selected="selected" {%endifequal%}>{{ x }}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                </div>
+                                                
+                                                
+                                               
+
+                                                 
+                                                </div>
+                                            </div>
+                                             <!-- Text input-->
+                                            <div class="form-check">
+                                                <label class="col-md-2 control-label">Estado:</label>  
+                                                <div class="col-md-6">
+                                                <div>
+                                                {{form.state|add_attributes:"form-check-input"}}
+                                                
+                                                 {%if form.errors.state%}
+                                                    <small data-bv-validator="notEmpty" class="help-block" style="">{{form.errors.state}}</small>
+                                                {%endif%}
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                             <!-- Button -->
+                                        
+                                        
+                                             <div class="form-group">
+                                              <label class="col-md-5 control-label"></label>
+                                              
+                                                 <button type="submit" class="btn btn-warning" style="margin-top: 10px"  >Actualizar <span class="glyphicon glyphicon-ok"></span></button>
+                                                 <a href="/admisiones/MantenerTipoTest/" class="btn btn-warning" style="margin-top: 10px" >Regresar <span class="glyphicon glyphicon-stop"></span></a>
+                                             
+                                            </div>
+                                       
+                                       
+                                    
+                                    </form> 
+  
+                                </div>
+                           
+                              
+                    </fieldset>
+                </div> 
+            </div> 
+        
+          </div><!-- /.container -->
+    </div>
+</div>
+
+{% block scripts %}
+<script src="https://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{% static 'contact-form/js/index.js'%}"></script>
+   
+    {% endblock %}
+      {% endblock %} 
+</body>
+</html>

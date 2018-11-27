@@ -1,0 +1,122 @@
+{% extends "gentelella/production/plain_page.html" %}
+
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+ {% block cabecera %}  
+    
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+
+  {% endblock%}  
+  
+  </head> 
+
+
+ <body>
+ 
+ {%block contenido %}
+ 
+ 
+    <div class="container-fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Documentos por Validar</h>
+            </div>
+        </div>
+    </div>    
+      
+   
+    <div class="container-fluid">
+        <div class="well  col-md-12 "  >        
+                <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                    <fieldset class="panel panel-primary">
+                      
+                        <div class="panel-heading">DOCUMENTOS REGISTRADOS</div>
+                        <div class="panel-body ">  
+                                {% if documentos %}
+                                    <div class="table-responsive">
+                                     <div style="height:150px;overflow:auto;">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                   
+                                                    <th></th>
+                                                    <th>Nombre</th>
+                                                    <th>Grado</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for documentos in documentos %}
+                                                    <tr>
+                                                        <td><span class="pull-left"><a href="/admisiones/ValidaDocumentos/?q_estudiante={{documentos.nombre}}" class="icon-block"><i class="fa fa-pencil"></i></a></span></td>
+                                                        <td>{{documentos.nombre}}</td>
+                                                        <td>{{documentos.grado}}</td>
+                                                        
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    No se han registrado documentos por validar.
+                                {% endif %} 
+                               
+                            <div class="form-group">
+                                            <label class="col-md-5 control-label"></label>
+                                                <!--<button type="submit" name='submit' class="btn btn-warning" style="margin-top: 10px" >Actualizar <span class="glyphicon glyphicon-ok"></span></button>-->
+                                                <a href="/admisiones/Inicio/" class="btn btn-warning" style="margin-top: 10px" >Cancelar <span class="glyphicon glyphicon-stop"></span></a>
+                                                <!--<button type="cancel" class="btn btn-warning" style="margin-top: 10px" formaction="/admisiones/Inicio/" method="get"  >Cancelar <span class="glyphicon glyphicon-stop"></span></button>-->
+                                                
+                            </div>         
+                        </div>
+                    </fieldset>
+                </div>
+              
+                 
+            </div>
+       
+    
+    </div><!-- /.container -->
+    
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+    
+    
+    <script>
+      $(function() {
+        $("#id_q_aplicante").autocomplete({
+          source: "/admisiones/ListaAplicantes/",
+          minLength: 2,
+        });
+      });
+    </script>
+    {% endblock %}
+   {% endblock %}
+  
+</body>
+</html>

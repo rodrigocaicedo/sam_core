@@ -1,0 +1,1400 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Admisiones - Montebello Academy</title>
+
+  <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+    <link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">  
+    
+       
+    
+  </head> 
+
+
+ <body>
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Formulario de Datos del Estudiante</h>
+            </div>
+        </div>
+        <form class="well form-horizontal col-md-12" action="/admisiones/FormularioEstudiantes/{{aplicacion.id_applications}}/" method="post"  id="contact_form">
+            {% csrf_token %}
+            
+        
+            <div class="container">
+                <div class "col-md-12">
+
+                    {% if form.non_field_errors %}
+                        <fieldset>
+                        <legend class="panel-heading">
+                            <strong data-bv-validator="notEmpty" class="help-block" style="color:red">Ya existe un registro con estos datos</strong>
+                        </legend>
+                        </fieldset>
+                    {% endif %}
+                </div>
+              
+                <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                    <fieldset class="panel panel-primary">
+                        
+                        <div class="panel-heading">DATOS ESTUDIANTE</div>
+                        <div class="panel-body">
+
+
+                            <div class="col-md-6">
+
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-4 control-label">No.Identificación:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-id-card"></i></span>
+                                            <input class="form-control" id="s_identificacion_id"  name="s_identificacion" 
+                                                   placeholder="Número de Identificación" type="text" >
+
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-4 control-label">Nombres:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                           <input class="form-control" id="s_nombres_id"  name="s_nombres" 
+                                                   placeholder="Nombres completos" type="text" value="{{aplicacion.name_student}}">
+
+                                        </div>
+                                       
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group col-md-12">     
+                                    <label class="col-md-4 control-label">Apellido Paterno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                           <input class="form-control" id="s_apellidos_id"  name="s_apellidos" 
+                                                   placeholder="Apellido Paterno" type="text" value="{{aplicacion.surname_student}}">
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-12">     
+                                    <label class="col-md-4 control-label">Apellido Materno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-user" ></i></span>
+                                           <input class="form-control" id="s_apellidos_2_id"  name="s_apellidos_2" 
+                                                   placeholder="Apellido Materno" type="text">
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                
+                                    <label class="col-md-4 control-label">Género:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    
+                                        <div class="input-group">
+                                           
+                                            <span class="input-group-addon"><i style="width:20px" class="fa fa-intersex"></i></span>
+                                                <select class="form-control selectpicker" id="s_genero_id" name="s_genero">
+                                                    <option value="F" {%ifequal aplicacion.gender_student "F"%} selected {%endifequal%}>Femenino</option>
+                                                    <option value="M" {%ifequal aplicacion.gender_student "M"%} selected {%endifequal%}>Masculino</option>
+                                               
+                                                </select>
+                                            </span>
+                                        </div>
+                                       
+                                        
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group col-md-12">
+                                 
+                                    <label class="col-md-4 control-label">Fecha Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer date">
+                                        <div class="input-group input-append date">
+                                            <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                           <input class="form-control datepicker" id="s_fecha_nacimiento_id" name="s_fecha_nacimiento" type="text" value="{{aplicacion.birth_date | date:'Y-m-d'}}">
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>                            
+
+
+                                <div class="form-group col-md-12">
+                                    
+                                    <label class="col-md-4 control-label">Dirección:</label>  
+                                    <div class="col-md-8 inputGroupContainer ">
+                                    <div class="input-group input-append ">
+                                        <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-home"></i></span>
+                                        <input class="form-control" id="s_direccion_id"  name="s_direccion" 
+                                                   placeholder="Dirección del Domicilio" type="text" value={{aplicacion.address_school}}>
+                                    </div>
+                                    
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-4 control-label">País Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                        <select class="form-control selectpicker" id="s_pais_nacimiento_id" name="s_pais_nacimiento"  >
+                                            
+                                           {% for key ,value in listap.items %}
+                                            <option value="{{ value }}" {%ifequal aplicacion.birth_country value%} selected {%endifequal%}>{{ key }}</option>
+                                           
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                    </div>
+                                  
+                                </div>
+                                
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-4 control-label">País Residencia:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                    <select class="form-control selectpicker" id="s_pais_residencia_id" name="s_pais_residencia"  >
+                                            {% for key ,value in listap.items %}
+                                            <option value="{{ value }}" {%ifequal aplicacion.country_home value%} selected {%endifequal%}>{{ key }}</option>
+                                           
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    
+                                    <label class="col-md-4 control-label">Información Médica:</label>  
+                                    <div class="col-md-8 inputGroupContainer ">
+                                    <div class="input-group input-append ">
+                                        <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-heart"></i></span>
+                                        <input class="form-control" id="s_informacion_medica_id"  name="s_informacion_medica" 
+                                                   placeholder="Información Médica" type="text">
+                                    </div>
+                                    
+                                    </div>   
+                                 
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </fieldset>
+                </div>
+                
+                <div class = "col-md-6" "col-sm-6" "col-xs-6" style="display:block;">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">DATOS DEL PADRE</div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    
+                                    <div class="form-group col-md-8 col-md-push-4">
+                                        <label class="col-md-10 control-label" style="padding-top:0px;">Información No Disponible</label>  
+                                        <div class="col-md-2 inputGroupContainer">
+                                        <div class="input-group">
+                                           
+                                            <input value="true" class="form-check-input" id="val_papa_id" name="valida_papa" type="checkbox" onchange = "disableDad()">
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-8 col-md-push-4">
+                                        <label class="col-md-7 control-label">¿Fallecido?</label>
+                                        <div class="col-md-5 inputGroupContainer">
+                                            <label class="radio-inline">
+                                              <input type="radio" class="p_difunto" id = "p_difunto_yes_id" name="p_difunto" value="true" onclick="deadDad()">Si
+                                            </label>
+                                            <label class="radio-inline">
+                                              <input type="radio" class="p_difunto" id = "p_difunto_no_id" name="p_difunto" value = "false" onclick = "deadDad()">No
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    
+                                 </div>
+                                
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">No.Identificación:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-id-card"></i></span>
+                                        <input class="form-control" id="p_identificacion_id"  name="p_identificacion" 
+                                               placeholder="Número de Identificación" type="text">
+                                    </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombres:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                       <input class="form-control" id="p_nombres_id"  name="p_nombres" 
+                                               placeholder="Nombres Completos" type="text">
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            
+                                                
+                            
+                            
+                               
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Paterno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="p_apellidos_id"  name="p_apellidos" 
+                                               placeholder="Apellido Paterno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>
+
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Materno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="p_apellidos_2_id"  name="p_apellidos_2" 
+                                               placeholder="Apellido Materno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>
+                                
+                                
+                               
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Fecha Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                           
+                                           <input class="form-control datepicker" id="p_fecha_nacimiento_id" name="p_fecha_nacimiento" type="text" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                 <label class="col-md-4 control-label">País Nacimiento:</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                    <select class="form-control selectpicker" id="p_pais_nacimiento_id" name="p_pais_nacimiento"  >
+                                       {% for key ,value in listap.items %}
+                                        <option value="{{ value }}">{{ key }}</option>
+                                       
+                                        {% endfor %}
+                                    </select>
+                                    </div>
+                                
+                                </div>
+                              
+                                </div>
+                                
+                                <div class="form-group">
+                                <label class="col-md-4 control-label">País Residencia:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                        <select class="form-control selectpicker" id="p_pais_residencia_id" name="p_pais_residencia"  >
+                                            {% for key ,value in listap.items %}
+                                            <option value="{{ value }}" >{{ key }}</option>
+                                           
+                                            {% endfor %}
+                                        </select>
+                                        </div>
+                                    
+                                    </div>
+                              
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Dirección:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-home"></i></span>
+                                           <input class="form-control" id="p_direccion_id"  name="p_direccion" 
+                                               placeholder="Dirección" type="text">
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Fijo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input placeholder="Ejemplo 022345678" class="form-control" id="p_telefono_id" 
+                                               maxlength="9" name="p_telefono" type="text">
+                                       
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Móvil:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-mobile"></i></span>
+                                        <input class="form-control" id="p_cell_id" maxlength="10" name="p_cell" 
+                                               placeholder="Ejemplo 0990909090" type="text" >
+
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Correo Electrónico:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-envelope"></i></span>
+                                          <input class="form-control" id="p_mail_id" maxlength="254" name="p_mail" 
+                                                 placeholder="Dirección de correo electrónico" type="email" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Nivel de Instrucción:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-graduation-cap"></i></span>
+                                        <!--<input placeholder="Ejemplo 022345678" class="form-control" id="p_instruccion_id" 
+                                               maxlength="9" name="p_intruccion" type="text">-->
+                                        <select class="form-control selectpicker" id="p_instruccion_id" name="p_instruccion" placeholder = "Seleccione Una">
+                                            <option value="" disabled selected>---------</option>
+                                            <option value="Bachillerato">Bachillerato</option>
+                                            <option value="Tercer Nivel">Tercer Nivel</option>
+                                            <option value="Cuarto Nivel">Cuarto Nivel</option>
+                                            <option value="Otra">Otra</option>                                           
+
+                                        </select>
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Profesión:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-briefcase"></i></span>
+                                        <input placeholder="Profesión" class="form-control" id="p_profesion_id" 
+                                               maxlength="254" name="p_profesion" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Lugar de Trabajo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-industry"></i></span>
+                                        <input placeholder="Nombre de empresa, oficina, etc." class="form-control" id="p_trabajo_id" 
+                                               maxlength="254" name="p_trabajo" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                               
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Oficina:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input placeholder="Ejemplo 022345678" class="form-control" id="p_telofi_id" 
+                                               maxlength="9" name="p_telofi" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Vive con el estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="p_vive_con" id = "p_vive_con_id" name="p_vive_con" value="true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="p_vive_con" id = "p_vive_con_id" name="p_vive_con" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+                                 
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Puede retirar al estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="p_retirar" id = "p_retirar_id" name="p_retirar" value = "true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="p_retirar" id = "p_retirar_id" name="p_retirar" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </fieldset>
+                </div>
+                
+
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">DATOS DE LA MADRE</div>
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    
+                                    <div class="form-group col-md-8 col-md-push-4">
+                                        <label class="col-md-10 control-label" style="padding-top:0px;">Información No Disponible</label>  
+                                        <div class="col-md-2 inputGroupContainer">
+                                        <div class="input-group">
+                                           
+                                            <input value="true" class="form-check-input" id="val_mama_id" name="valida_mama" type="checkbox" onchange = "disableMom()">
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-8 col-md-push-4">
+                                        <label class="col-md-7 control-label">¿Fallecida?</label>
+                                        <div class="col-md-5 inputGroupContainer">
+                                            <label class="radio-inline">
+                                              <input type="radio" class="m_difunto" id = "m_difunto_yes_id" name="m_difunto" value="true" onclick = "deadMom()">Si
+                                            </label>
+                                            <label class="radio-inline">
+                                              <input type="radio" class="m_difunto" id = "m_difunto_no_id" name="m_difunto" value = "false" onclick = "deadMom()">No
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    
+                                 </div>
+                                 
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">No.Identificación:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-id-card"></i></span>
+                                        <input class="form-control" id="m_identificacion_id"  name="m_identificacion" 
+                                               placeholder="Número de Identificación" type="text">
+                                    </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombres:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                       <input class="form-control" id="m_nombres_id"  name="m_nombres" 
+                                               placeholder="Nombres Completos" type="text">
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            
+                             
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Paterno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="m_apellidos_id"  name="m_apellidos" 
+                                               placeholder="Apellido Paterno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Materno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="m_apellidos_2_id"  name="m_apellidos_2" 
+                                               placeholder="Apellido Materno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>
+                                
+                               
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Fecha Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                          <input class="form-control datepicker" id="m_fecha_nacimiento_id" name="m_fecha_nacimiento" type="text" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">País Nacimiento:</label>  
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                                <select class="form-control selectpicker" id="m_pais_nacimiento_id" name="m_pais_nacimiento"  >
+                                                     {% for key ,value in listap.items %}
+                                                    <option value="{{ value }}" >{{ key }}</option>
+                                                   
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                
+                                </div>
+                              
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">País Residencia:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                        <select class="form-control selectpicker" id="m_pais_residencia_id" name="m_pais_residencia"  >
+                                             {% for key ,value in listap.items %}
+                                            <option value="{{ value }}" >{{ key }}</option>
+                                           
+                                            {% endfor %}
+                                        </select>
+                                        </div>
+                                    
+                                    </div>
+                              
+                                </div>
+                               
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Dirección:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-home"></i></span>
+                                           <input class="form-control" id="m_direccion_id"  name="m_direccion" 
+                                               placeholder="Direccion" type="text">
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Fijo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input placeholder="Ejemplo 022345678" class="form-control" id="m_telefono_id" 
+                                               maxlength="9" name="m_telefono" type="text">
+                                       
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Móvil:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-mobile"></i></span>
+                                        <input class="form-control" id="m_cell_id" maxlength="10" name="m_cell" 
+                                               placeholder="Ejemplo 0990909090" type="text" >
+
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Correo Electrónico:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-envelope"></i></span>
+                                           <input class="form-control" id="m_mail_id" maxlength="254" name="m_mail" 
+                                                 placeholder="Dirección de correo electrónico" type="email" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Nivel de Instrucción:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-graduation-cap"></i></span>
+                                        <!--<input placeholder="Ejemplo 022345678" class="form-control" id="m_instruccion_id" 
+                                               maxlength="9" name="m_intruccion" type="text">-->
+                                            <select class="form-control selectpicker" id="m_instruccion_id" name="m_instruccion" placeholder = "Seleccione Una">
+                                                <option value="" disabled selected>---------</option>
+                                                <option value="Bachillerato">Bachillerato</option>
+                                                <option value="Tercer Nivel">Tercer Nivel</option>
+                                                <option value="Cuarto Nivel">Cuarto Nivel</option>
+                                                <option value="Otra">Otra</option>                                           
+
+                                            </select>
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Profesión:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-briefcase"></i></span>
+                                        <input placeholder="Profesión" class="form-control" id="m_profesion_id" 
+                                               maxlength="254" name="m_profesion" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Lugar de Trabajo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-industry"></i></span>
+                                        <input placeholder="Nombre de empresa, oficina, etc." class="form-control" id="m_trabajo_id" 
+                                               maxlength="254" name="m_trabajo" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                               
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Oficina:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input placeholder="Ejemplo 022345678" class="form-control" id="m_telofi_id" 
+                                               maxlength="9" name="m_telofi" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Vive con el estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="m_vive_con" id = "m_vive_con_id" name="m_vive_con" value="true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="m_vive_con" id = "m_vive_con_id" name="m_vive_con" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+                                 
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Puede retirar al estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="m_retirar" id = "m_retirar_id" name="m_retirar" value = "true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="m_retirar" id = "m_retirar_id" name="m_retirar" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+                                 
+
+                            </div>
+                    </fieldset>
+                </div>   
+
+               <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">SELECCIONE EL REPRESENTANTE LEGAL</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Representante:</label>  
+                                    <div class="col-md-4 inputGroupContainer">
+                                        <div class="input-group">
+                                           <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                                <select class="form-control selectpicker remove-lista" id="representante_id" name="representante" >
+                                                    <option value="">---------</option>
+                                                    <option value="P">Padre</option>
+                                                    <option value="M">Madre</option>
+                                                    <option value="O">Otro</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                    </fieldset>
+                    
+
+                                
+                    <fieldset id = "panel_representante" class="panel panel-primary" style="display: None;">
+                        <div class="panel-heading">INFORMACIÓN DEL REPRESENTANTE LEGAL</div>
+
+                        <div class="panel-body">
+                                                     
+                            <div class="col-md-6">                           
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">No.Identificación:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-id-card"></i></span>
+                                        <input class="form-control" id="r_identificacion_id"  name="r_identificacion" 
+                                               placeholder="Número de Identificación" type="text">
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                                        
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombres:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                       <input class="form-control" id="r_nombres_id"  name="r_nombres" 
+                                               placeholder="Nombres Completos" type="text">
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                                                        
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Paterno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="r_apellidos_id"  name="r_apellidos" 
+                                               placeholder="Apellido Paterno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>                                                                            
+                                                                                                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellido Materno:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        <input class="form-control" id="r_apellidos_2_id"  name="r_apellidos_2" 
+                                               placeholder="Apellido Materno" type="text">
+                                    </div>
+                                   
+                                    </div>
+                                </div>
+                                                            
+                                                           
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Género:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                       <span class="input-group-addon"><i style="width:20px" class="fa fa-intersex"></i></span>
+                                             <select class="form-control selectpicker" id="r_genero_id" name="r_genero" >
+                                                <option value="F" selected="selected">Femenino</option>
+                                                <option value="M">Masculino</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                                                            
+                                                         
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Fecha Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                          <input class="form-control datepicker" id="r_fecha_nacimiento_id" name="r_fecha_nacimiento" type="text" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">País Nacimiento:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                        <select class="form-control selectpicker" id="r_pais-nacimiento_id" name="r_pais_nacimiento"  >
+                                             {% for key ,value in listap.items %}
+                                                <option value="{{ value }}" >{{ key }}</option>
+                                               
+                                                {% endfor %}
+                                        </select>
+                                        </div>
+                                    
+                                    </div>
+                              
+                                </div>
+                                                            
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">País Residencia:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                        <select class="form-control selectpicker" id="r_pais_residencia_id" name="r_pais_residencia"  >
+                                             {% for key ,value in listap.items %}
+                                                <option value="{{ value }}" >{{ key }}</option>
+                                               
+                                                {% endfor %}
+                                        </select>
+                                        </div>
+                                    
+                                    </div>
+                              
+                                </div>
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Vive con el estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="r_vive_con" id = "r_vive_con_id" name="r_vive_con" value="true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="r_vive_con" id = "r_vive_con_id" name="r_vive_con" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                                
+                            <div class="col-md-6">                        
+                                                        
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Dirección:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-home"></i></span>
+                                           <input class="form-control" id="r_direccion_id"  name="r_direccion" 
+                                               placeholder="Direccion" type="text">
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Fijo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        <input placeholder="Ejemplo 022345678" class="form-control" id="r_telefono_id" 
+                                               maxlength="9" name="r_telefono" type="text">
+                                       
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+
+                                                          
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Móvil:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-mobile"></i></span>
+                                        <input class="form-control" id="r_cell_id" maxlength="10" name="r_cell" 
+                                               placeholder="Ejemplo 0990909090" type="text" >
+
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Correo Electrónico:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-envelope"></i></span>
+                                           <input class="form-control" id="r_mail_id" maxlength="254" name="r_mail" 
+                                                 placeholder="Dirección de correo electrónico" type="email" >
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Nivel de Instrucción:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-graduation-cap"></i></span>
+                                        <!--<input placeholder="Ejemplo 022345678" class="form-control" id="r_instruccion_id" 
+                                               maxlength="9" name="r_intruccion" type="text">-->
+                                        <select class="form-control selectpicker" id="r_instruccion_id" name="r_instruccion" placeholder = "Seleccione Una">
+                                            <option value="" disabled selected>---------</option>
+                                            <option value="Bachillerato">Bachillerato</option>
+                                            <option value="Tercer Nivel">Tercer Nivel</option>
+                                            <option value="Cuarto Nivel">Cuarto Nivel</option>
+                                            <option value="Otra">Otra</option>                                           
+
+                                        </select>
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Profesión:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-briefcase"></i></span>
+                                        <input placeholder="Profesión" class="form-control" id="r_profesion_id" 
+                                               maxlength="254" name="r_profesion" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Lugar de Trabajo:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-industry"></i></span>
+                                        <input placeholder="Nombre de empresa, oficina, etc." class="form-control" id="r_trabajo_id" 
+                                               maxlength="254" name="r_trabajo" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                                          
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Oficina:</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                       <input placeholder="Ejemplo 022345678" class="form-control" id="r_telofi_id" 
+                                               maxlength="9" name="r_telofi" type="text">
+
+                                    </div>
+                                     
+                                    </div>
+                                </div>
+
+                                <div class="form-group" >
+                                    <label class="col-md-4 control-label">¿Puede retirar al estudiante?</label>
+                                    <div class="col-md-8 inputGroupContainer">
+                                        <label class="radio-inline">
+                                          <input type="radio" class="r_retirar" id = "r_retirar_id" name="r_retirar" value = "true">Si
+                                        </label>
+                                        <label class="radio-inline">
+                                          <input type="radio" class="r_retirar" id = "r_retirar_id" name="r_retirar" value = "false">No
+                                        </label>
+                                    </div>
+                                </div>
+                                                             
+                            </div>
+                        </div> 
+
+                    </fieldset>
+                </div>
+            </div>
+               
+                                
+
+
+                
+            <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-5 control-label"></label>
+                  
+                    <button type="submit" class="btn btn-warning " style="margin-top: 10px" >Guardar <span class="glyphicon glyphicon-ok"></span></button>
+                    
+                    <!--<a href="/admisiones/Administracion/" class="btn btn-warning" style="margin-top: 10px" >
+                    <button type="cancel" class="btn btn-warning rm-padre" style="margin-top: 10px" >remove <span class="glyphicon glyphicon-stop"></span></button>-->
+                    <a href="https://www.montebelloacademy.org"   class="btn btn-warning" style="margin-top: 10px" >Cancelar <span class="glyphicon glyphicon-new-window"></span></a>
+                  
+                </div>
+                    
+                
+           
+        </form>
+    </div><!-- /.container -->
+
+
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/NewFormsStudents.js'%}"></script>
+    
+    <script>
+
+    $('#representante_id.selectpicker').on('change', function(){
+        var selected = $(this).val();
+        var chequear_m  = document.getElementById("val_mama_id").checked;
+        var chequear_p  = document.getElementById("val_papa_id").checked;
+        
+        //var chequear=$('#val_mama_id.checkbox').val();
+        if (selected == 'O' ) {
+            document.getElementById("panel_representante").style.display="block";}
+        else if (selected == 'M' && chequear_m == true ) {
+           alert('No puede seleccionar Madre como representante si no tiene información.');
+           document.getElementById("val_mama_id").checked = false;
+           disableMom();}
+           //document.getElementById("val_mama_id").name = document.getElementById("val_mama_id").name+"_nv";}
+        else if (selected == 'P' && chequear_p == true ) {
+           alert('No puede seleccionar Padre como representante si no tiene información.');
+           document.getElementById("val_papa_id").checked = false;
+           disableDad();}
+        else {
+            document.getElementById("panel_representante").style.display="None";
+        }
+           //document.getElementById("val_mama_id").name = document.getElementById("val_mama_id").name+"_nv";}
+            //$('#representante_id.selectpicker').refresh();
+    });
+
+
+    function deadMom(){
+        var m_difunto = document.getElementsByClassName("m_difunto");
+        var i;
+        for (i = 0; i < m_difunto.length; i++) {
+            if (m_difunto[i].value == "true" && m_difunto[i].checked){
+                document.getElementById("m_direccion_id").disabled = true;
+                document.getElementById("m_telefono_id").disabled = true;
+                document.getElementById("m_cell_id").disabled = true;
+                document.getElementById("m_telofi_id").disabled = true;
+                document.getElementById("m_pais_residencia_id").disabled = true;
+                document.getElementById("m_mail_id").disabled = true;
+                document.getElementById("m_instruccion_id").disabled = true;
+                document.getElementById("m_profesion_id").disabled = true;
+                document.getElementById("m_trabajo_id").disabled = true;
+                var m_vive_con = document.getElementsByClassName("m_vive_con");
+                var i;
+                for (i = 0; i < m_vive_con.length; i++) {
+                    m_vive_con[i].disabled = true;
+                }
+                var m_retirar = document.getElementsByClassName("m_retirar");
+                var i;
+                for (i = 0; i < m_retirar.length; i++) {
+                    m_retirar[i].disabled = true;
+                }
+
+            }
+            else {
+                document.getElementById("m_direccion_id").disabled = false;
+                document.getElementById("m_telefono_id").disabled = false;
+                document.getElementById("m_cell_id").disabled = false;
+                document.getElementById("m_telofi_id").disabled = false;
+                document.getElementById("m_pais_residencia_id").disabled = false;
+                document.getElementById("m_mail_id").disabled = false;
+                document.getElementById("m_instruccion_id").disabled = false;
+                document.getElementById("m_profesion_id").disabled = false;
+                document.getElementById("m_trabajo_id").disabled = false;
+                var m_vive_con = document.getElementsByClassName("m_vive_con");
+                var i;
+                for (i = 0; i < m_vive_con.length; i++) {
+                    m_vive_con[i].disabled = false;
+                }
+                var m_retirar = document.getElementsByClassName("m_retirar");
+                var i;
+                for (i = 0; i < m_retirar.length; i++) {
+                    m_retirar[i].disabled = false;
+                }
+
+            }
+        }
+
+    }
+
+    function deadDad(){
+        var p_difunto = document.getElementsByClassName("p_difunto");
+
+        var i;
+        for (i = 0; i < p_difunto.length; i++) {
+            if (p_difunto[i].value == "true" && p_difunto[i].checked){
+
+                document.getElementById("p_direccion_id").disabled = true;
+                document.getElementById("p_telefono_id").disabled = true;
+                document.getElementById("p_cell_id").disabled = true;
+                document.getElementById("p_telofi_id").disabled = true;
+                document.getElementById("p_pais_residencia_id").disabled = true;
+                document.getElementById("p_mail_id").disabled = true;
+                document.getElementById("p_instruccion_id").disabled = true;
+                document.getElementById("p_profesion_id").disabled = true;
+                document.getElementById("p_trabajo_id").disabled = true;
+                var p_vive_con = document.getElementsByClassName("p_vive_con");
+                var i;
+                for (i = 0; i < p_vive_con.length; i++) {
+                    p_vive_con[i].disabled = true;
+                }
+                var p_retirar = document.getElementsByClassName("p_retirar");
+                var i;
+                for (i = 0; i < p_retirar.length; i++) {
+                    p_retirar[i].disabled = true;
+                }
+            }
+            else {
+                document.getElementById("p_direccion_id").disabled = false;
+                document.getElementById("p_telefono_id").disabled = false;
+                document.getElementById("p_cell_id").disabled = false;
+                document.getElementById("p_telofi_id").disabled = false;
+                document.getElementById("p_pais_residencia_id").disabled = false;
+                document.getElementById("p_mail_id").disabled = false;
+                document.getElementById("p_instruccion_id").disabled = false;
+                document.getElementById("p_profesion_id").disabled = false;
+                document.getElementById("p_trabajo_id").disabled = false;
+                var p_vive_con = document.getElementsByClassName("p_vive_con");
+                var i;
+                for (i = 0; i < p_vive_con.length; i++) {
+                    p_vive_con[i].disabled = false;
+                }
+                var p_retirar = document.getElementsByClassName("p_retirar");
+                var i;
+                for (i = 0; i < p_retirar.length; i++) {
+                    p_retirar[i].disabled = false;
+                }
+
+            }
+        }
+
+    }
+
+
+    function disableMom(){
+
+        var estado = document.getElementById("val_mama_id").checked;
+
+        if (estado == true) {
+            $("#representante_id option[value='M']").remove();
+
+            document.getElementById("m_identificacion_id").disabled = true;
+            document.getElementById("m_nombres_id").disabled = true;
+            document.getElementById("m_apellidos_id").disabled = true;
+            document.getElementById("m_apellidos_2_id").disabled = true;
+            document.getElementById("m_fecha_nacimiento_id").disabled = true;
+            document.getElementById("m_direccion_id").disabled = true;
+            document.getElementById("m_telefono_id").disabled = true;
+            document.getElementById("m_cell_id").disabled = true;
+            document.getElementById("m_telofi_id").disabled = true;
+            document.getElementById("m_pais_nacimiento_id").disabled = true;
+            document.getElementById("m_pais_residencia_id").disabled = true;
+            document.getElementById("m_mail_id").disabled = true;
+            document.getElementById("m_instruccion_id").disabled = true;
+            document.getElementById("m_profesion_id").disabled = true;
+            document.getElementById("m_trabajo_id").disabled = true;
+            var m_difunto = document.getElementsByClassName("m_difunto");
+            var i;
+            for (i = 0; i < m_difunto.length; i++) {
+                m_difunto[i].disabled = true;
+            }
+            var m_vive_con = document.getElementsByClassName("m_vive_con");
+            var i;
+            for (i = 0; i < m_vive_con.length; i++) {
+                m_vive_con[i].disabled = true;
+            }
+            var m_retirar = document.getElementsByClassName("m_retirar");
+            var i;
+            for (i = 0; i < m_retirar.length; i++) {
+                m_retirar[i].disabled = true;
+            }
+
+
+
+
+
+            //alert(estado)
+        } 
+        else if (estado == false) {
+            var option = document.createElement( 'option' );
+            option.value = "M";
+            option.text = "Madre";
+            document.getElementById("representante_id").add(option);
+            document.getElementById("m_identificacion_id").disabled = false;
+            document.getElementById("m_nombres_id").disabled = false;
+            document.getElementById("m_apellidos_id").disabled = false;
+            document.getElementById("m_apellidos_2_id").disabled = false;
+            document.getElementById("m_fecha_nacimiento_id").disabled = false;
+            document.getElementById("m_direccion_id").disabled = false;
+            document.getElementById("m_telefono_id").disabled = false;
+            document.getElementById("m_cell_id").disabled = false;
+            document.getElementById("m_telofi_id").disabled = false;
+            document.getElementById("m_pais_nacimiento_id").disabled = false;
+            document.getElementById("m_pais_residencia_id").disabled = false;
+            document.getElementById("m_mail_id").disabled = false;
+            document.getElementById("m_instruccion_id").disabled = false;
+            document.getElementById("m_profesion_id").disabled = false;
+            document.getElementById("m_trabajo_id").disabled = false;
+            document.getElementById("m_difunto_no_id").checked = true;
+            var m_difunto = document.getElementsByClassName("m_difunto");
+            var i;
+            for (i = 0; i < m_difunto.length; i++) {
+                m_difunto[i].disabled = false;
+            }
+            var m_vive_con = document.getElementsByClassName("m_vive_con");
+            var i;
+            for (i = 0; i < m_vive_con.length; i++) {
+                m_vive_con[i].disabled = false;
+            }
+            var m_retirar = document.getElementsByClassName("m_retirar");
+            var i;
+            for (i = 0; i < m_retirar.length; i++) {
+                m_retirar[i].disabled = false;
+            }
+
+
+
+        }
+    }
+
+    function disableDad(){
+
+        var estado = document.getElementById("val_papa_id").checked;
+
+        if (estado == true) {
+            $("#representante_id option[value='P']").remove();
+            document.getElementById("p_identificacion_id").disabled = true;
+            document.getElementById("p_nombres_id").disabled = true;
+            document.getElementById("p_apellidos_id").disabled = true;
+            document.getElementById("p_apellidos_2_id").disabled = true;            
+            document.getElementById("p_fecha_nacimiento_id").disabled = true;
+            document.getElementById("p_direccion_id").disabled = true;
+            document.getElementById("p_telefono_id").disabled = true;
+            document.getElementById("p_cell_id").disabled = true;
+            document.getElementById("p_telofi_id").disabled = true;
+            document.getElementById("p_pais_nacimiento_id").disabled = true;
+            document.getElementById("p_pais_residencia_id").disabled = true;
+            document.getElementById("p_mail_id").disabled = true;
+            document.getElementById("p_instruccion_id").disabled = true;
+            document.getElementById("p_profesion_id").disabled = true;
+            document.getElementById("p_trabajo_id").disabled = true;
+            var p_difunto = document.getElementsByClassName("p_difunto");
+            var i;
+            for (i = 0; i < p_difunto.length; i++) {
+                p_difunto[i].disabled = true;
+            }
+            var p_vive_con = document.getElementsByClassName("p_vive_con");
+            var i;
+            for (i = 0; i < p_vive_con.length; i++) {
+                p_vive_con[i].disabled = true;
+            }
+            var p_retirar = document.getElementsByClassName("p_retirar");
+            var i;
+            for (i = 0; i < p_retirar.length; i++) {
+                p_retirar[i].disabled = true;
+            }
+            //alert(estado)
+        } 
+        else if (estado == false) {
+            var option = document.createElement( 'option' );
+            option.value = "P";
+            option.text = "Padre";
+            document.getElementById("representante_id").add(option);
+            document.getElementById("p_identificacion_id").disabled = false;
+            document.getElementById("p_nombres_id").disabled = false;
+            document.getElementById("p_apellidos_id").disabled = false;
+            document.getElementById("p_apellidos_2_id").disabled = false;
+            document.getElementById("p_fecha_nacimiento_id").disabled = false;
+            document.getElementById("p_direccion_id").disabled = false;
+            document.getElementById("p_telefono_id").disabled = false;
+            document.getElementById("p_cell_id").disabled = false;
+            document.getElementById("p_telofi_id").disabled = false;
+            document.getElementById("p_pais_nacimiento_id").disabled = false;
+            document.getElementById("p_pais_residencia_id").disabled = false;
+            document.getElementById("p_mail_id").disabled = false;
+            document.getElementById("p_instruccion_id").disabled = false;
+            document.getElementById("p_profesion_id").disabled = false;
+            document.getElementById("p_trabajo_id").disabled = false;
+            document.getElementById("p_difunto_no_id").checked = true;
+            var p_difunto = document.getElementsByClassName("p_difunto");
+            var i;
+            for (i = 0; i < p_difunto.length; i++) {
+                p_difunto[i].disabled = false;
+            }
+            var p_vive_con = document.getElementsByClassName("p_vive_con");
+            var i;
+            for (i = 0; i < p_vive_con.length; i++) {
+                p_vive_con[i].disabled = false;
+            }
+            var p_retirar = document.getElementsByClassName("p_retirar");
+            var i;
+            for (i = 0; i < p_retirar.length; i++) {
+                p_retirar[i].disabled = false;
+            }
+
+        }
+    }
+    </script>
+   
+   
+</body>
+</html>

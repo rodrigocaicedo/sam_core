@@ -1,0 +1,317 @@
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+
+    <title>Admisiones - Montebello Academy</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "templates/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href=" {% static "templates/gentelella/vendors/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href=" {% static "templates/gentelella/vendors/nprogress/nprogress.css" %}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href=" {% static "templates/gentellela/vendors/animate.css/animate.min.css" %}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href=" {% static "templates/gentelella/build/css/custom.min.css" %}" rel="stylesheet">
+    
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+       
+       
+    
+  </head> 
+
+
+ <body>
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Formulario de Admisión Estudiantil</h>
+            </div>
+        </div>
+        <form class="well form-horizontal col-md-12" action="/admisiones/NuevaSolicitud/" method="post"  id="contact_form">
+            <div class="container">
+                <div class"col-md-12">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <fieldset>
+                        <legend class="panel-heading">
+                            <strong data-bv-validator="notEmpty" class="help-block" style="color:red">Ya existe una aplicación con estos datos</strong>
+                    </legend>
+                    </fieldset>
+                    {% endif %}
+                </div>
+                <div class = "col-md-6">
+                    <fieldset class="panel panel-primary">
+                        <!-- Form Name -->
+                        <div class="panel-heading">APLICANTE</div>
+                        <div class="panel-body">
+                    
+                             <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Tipo Aplicación</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                    {{form.type_student|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Fecha Aplicación</label>  
+                                <div class="col-md-8 inputGroupContainer date">
+                                <div class="input-group input-append date">
+                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                    {{form.date_application|add_attributes:"form-control datepicker,placeholder:Fecha de Aplicación"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nombres</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" style="width:20px"></i></span>
+                                    {{form.name_student|add_attributes:"form-control,placeholder:Nombres completos"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Apellidos</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user" style="width:20px"></i></span>
+                                    {{form.surname_student|add_attributes:"form-control,placeholder:Apellidos completos"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                             <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Genero</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                    {{form.gender_student|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Fecha Nacimiento</label>  
+                                <div class="col-md-8 inputGroupContainer date">
+                                <div class="input-group input-append date">
+                                    <span class="input-group-addon add-on"><i style="width:20px" class="fa fa-calendar"></i></span>
+                                    {{form.birth_date|add_attributes:"class:form-control datepicker,placeholder:Fecha de Nacimiento"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{ form.birth_country.label}}</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                 {{form.birth_country|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{ form.country_home.label}}</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                 {{form.country_home|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">{{ form.applied_grade.label}}</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="glyphicon glyphicon-list"></i></span>
+                                {{form.applied_grade|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                            
+                             <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Período Lectivo</label>  
+                                <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-globe"></i></span>
+                                 {{form.school_period|add_attributes:"class:form-control selectpicker"}}
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class = "col-md-6">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">REPRESENTANTE</div>
+                            <div class="panel-body">
+                                 <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Nombres Representante</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        {{form.name_tutor|add_attributes:"form-control,placeholder:Nombres Completos"}}
+                                    </div>
+                                    </div>
+                                </div>
+                            
+                                <!-- Text input-->
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">Apellidos Representante</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-user"></i></span>
+                                        {{form.surname_tutor|add_attributes:"form-control,placeholder:Apellidos Completos"}}
+                                    </div>
+                                    </div>
+                                </div>
+            
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Correo Electrónico</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-envelope"></i></span>
+                                        {{form.mail_tutor|add_attributes:"class:form-control,placeholder:Dirección de correo electrónico"}}
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Fijo</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-phone"></i></span>
+                                        {{form.phone_tutor|add_attributes:"form-control ,placeholder: Ejemplo 026017070"}}
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label">Teléfono Móvil</label>  
+                                    <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i style="width:20px" class="fa fa-mobile"></i></span>
+                                        {{form.cell_tutor|add_attributes:"class:form-control,placeholder:0990909090"}}
+
+                                    </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                    </fieldset>
+                </div>
+
+
+                <fieldset class="panel panel-primary">
+                    <div class="panel-heading">INSTITUCIÓN EDUCATIVA PREVIA</div>
+                    <div class="panel-body">
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label">Nombre</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-home"></i></span>
+                                {{form.name_school|add_attributes:"form-control,placeholder:Nombre de institución"}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label">Lugar</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-map-marker"></i></span>
+                                {{form.address_school|add_attributes:"form-control,placeholder:País, Ciudad o Dirección"}}
+                            </div>
+                            </div>
+                        </div>
+                        
+                         <!-- Text input-->
+                         <div class="form-group">
+                          <label class="col-md-4 control-label">Año Lectivo</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i style="width:20px" class="fa fa-home"></i></span>
+                                {{form.last_year|add_attributes:"form-control,placeholder:Último Año Lectivo Aprobado"}}
+                            </div>
+                          </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- Success message -->
+                    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+                </fieldset>
+
+
+                <fieldset>
+                <!-- Button -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label"></label>
+                      <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning" style="margin-top: 10px" >Send <span class="glyphicon glyphicon-send"></span></button>
+                      </div>
+                    </div>
+
+                </fieldset>
+            </div>
+        </form>
+    </div><!-- /.container -->
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+<script src="{% static "contact-form/js/index.js"%}"></script>
+   
+    
+</body>
+</html>

@@ -1,0 +1,698 @@
+<!--
+
+{% for x in asignaciones %}
+{{x.profesor}}
+{{x.actividad}}
+{%endfor%}
+
+
+{% load staticfiles %}
+{% load l10n %}
+-->
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Calificación para Subsidio Familiar - Resumen</title>
+
+		<script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="{% static 'contact-form/js/bootstrap.min.js' %}" type="text/javascript"></script>
+		<!--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
+
+
+		<!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">-->
+
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrap-theme.min.css' %}">
+		<link rel='stylesheet prefetch' href="{% static 'contact-form/css/bootstrapValidator.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+		<link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}" type="text/css">
+
+		<link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}" type="text/css">
+
+		
+
+
+
+	</head>
+
+	<body style="background:white">
+
+	<div class = "container">
+		<div class="container page-header">
+      
+	        <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+	          <img id = "logo-montebello" src="/static/logo.png" width="120" height="120">
+	        </div>
+	          
+	        <div class="col-md-9 col-sm-9 col-xs-9" align="right">
+	          <h1>Montebello Academy</h1>
+	          <h3>Calificación para Subsidio Familiar</h3>
+	          <h5>{{pedido.solicitante}} - {{pedido.email}}</h5>
+
+	        </div>
+		</div>
+		{% if errores2 %}
+		<div class="container col-md-12">
+			<div class="alert alert-danger" role="alert">
+
+				<p>No puede finalizar su solicitud sin ingresar la siguiente informacion:</p>
+
+
+					{%for error in errores%}
+					<p>- {{error}}</p>
+
+					{% endfor %}
+
+			</div>
+		</div>
+		{% endif %}
+
+		<div class = "container col-md-12 panel-group" id="main_accordion">
+			<div class = "panel-group panel panel-primary" id="representantes">
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion"><small class="panel-title"> SECCIÓN REPRESENTANTES</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.representante_set.all %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+				<div class="panel panel-collapse collapse" id="accordion">
+					<div class="panel-body">
+						{% if pedido.representante_set.all%}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Nombres y Apellidos</th>
+										<th scope="col">Relación</th>
+										<th scope="col">Fecha de Nacimiento</th>
+										<th scope="col">Teléfono Fijo</th>
+										<th scope="col">Teléfono Celular</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for representante in pedido.representante_set.all %}
+								<tr>
+									<td>{{representante.nombres}} {{representante.apellido_paterno}}</td>
+									<td>{{representante.relacion}}</td>
+									<td>{{representante.fecha_nacimiento}}</td>
+									<td>{{representante.telefono_casa}}</td>
+									<td>{{representante.telefono_celular}}</td>
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/representante/{{representante.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span> 
+									<span class="pull-right"><a class="confirmation" href="/socioeconomico/{{pedido.pk}}/representante/{{representante.pk}}/eliminar" class="icon-block"> <i class="fa fa-trash"></i></a></span></td>
+								</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						{% else %}
+							<p>No existe registro de representantes. Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/representante/">aquí</a> para registrar un representante.</p>
+						{% endif %}
+						<p>Recuerde ingresar los datos de padre y madre de el o los estudiantes.</p>
+						<a href="/socioeconomico/{{pedido.pk}}/representante/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+					</div>
+				</div>
+			</div>
+
+			<div class = "panel-group panel panel-primary" id="estudiantes">
+				
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion2"><small class="panel-title"> SECCIÓN {%ifequal pedido.motivo_solicitud "Proceso de Admisiones" %}ASPIRANTES / {%endifequal %}ESTUDIANTES DE MONTEBELLO</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.estudiante_set.all %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion2">
+					<div class="panel-body">
+						{% if pedido.estudiante_set.all%}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Nombres y Apellidos</th>
+										<th scope="col">Fecha de Nacimiento</th>
+										<th scope="col">Grado / Nivel</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+							{% for estudiante in pedido.estudiante_set.all %}
+								<tr>
+									<td>{{estudiante.nombres}} {{estudiante.apellido_paterno}}</td>
+									<td>{{estudiante.fecha_nacimiento}}</td>
+									<td>{{estudiante.nivel.nivel}}{{estudiante.nivel.paralelo}}</td>
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/estudiante/{{estudiante.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span> 
+									<span class="pull-right"><a class="confirmation" href="/socioeconomico/{{pedido.pk}}/estudiante/{{estudiante.pk}}/eliminar" class="icon-block"> <i class="fa fa-trash"></i></a></span></td>
+								</tr>
+							{% endfor %}
+								</tbody>
+							</table>
+						{% else %}
+							<p>No existe registro de estudiantes. Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/estudiante/">aquí</a> para registrar un estudiante.</p>
+						{% endif %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/estudiante/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+					</div>
+				</div>
+			</div>
+
+			<div class = "panel-group panel panel-primary" id="domicilio">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion3"><small class="panel-title"> SECCIÓN DIRECCIÓN DE DOMICILIO</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.domicilio %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion3">
+					<div class="panel-body">
+						{% if pedido.domicilio %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Calle Principal</th>
+										<th scope="col">Calle Secundaria</th>
+										<th scope="col">Número</th>
+										<th scope="col">Barrio</th>
+										<th scope="col">Teléfono</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.domicilio.direccion_principal}}</td>
+									<td>{{pedido.domicilio.direccion_secundaria}}</td>
+									<td>{{pedido.domicilio.direccion_numero}}</td>
+									<td>{{pedido.domicilio.barrio}}</td>
+									<td>{{pedido.domicilio.telefono_casa}}</td>
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/domicilio/{{pedido.domicilio.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							
+							</tbody>
+						</table>
+						{% else %}
+							<p>No está registrado la dirección del domicilio. Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/domicilio/">aquí</a> para ingresarla.</p>
+						{% endif %}
+						{% if not pedido.domicilio %}
+						<a href="/socioeconomico/{{pedido.pk}}/domicilio/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>{% endif %}
+					</div>
+				</div>
+			</div>
+			
+			<div class = "panel-group panel panel-primary" id="grupo_familiar">
+
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion4"><small class="panel-title"> SECCIÓN GRUPO FAMILIAR</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.integrante_familia_set.count > 0 %}
+                        	{% if sin_validar == False%}
+                        	<i class="fa fa-check-circle"></i>{%endif%}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion4">
+					<div class="panel-body">
+						{% if pedido.integrante_familia_set.all%}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Nombres Completos</th>
+										<th scope="col">Fecha de Nacimiento</th>
+										<th scope="col">Documento de Identidad</th>
+										<th scope="col">Estado Civil</th>
+										<th scope="col">Parentesco</th>
+										<th scope="col">Nivel de Educación</th>
+										<th scope="col">Ocupación</th>
+										<th scope = "col">Validado</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>						
+							{% for integrante in pedido.integrante_familia_set.all %}
+								<tr>
+									<td>{{integrante.nombres_completos}}</td>
+									<td>{{integrante.fecha_nacimiento}}</td>
+									<td>{{integrante.numero_id}}</td>
+									<td>{{integrante.estado_civil}}</td>
+									<td>{{integrante.parentesco}}</td>
+									<td>{{integrante.nivel_estudios}}</td>								
+									<td>{{integrante.actividad}}</td>
+									<td>{% ifequal integrante.validado True %}Validado{%else%}No validado{%endifequal%}</td>									
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/integrante/{{integrante.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td> 
+									<td><span class="pull-right"><a class="confirmation" href="/socioeconomico/{{pedido.pk}}/integrante/{{integrante.pk}}/eliminar" class="icon-block"> <i class="fa fa-trash"></i></a></span></td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/integrante/">aquí</a> para registrar los miembros del grupo familiar, incluído el o los estudiantes.</p>
+						{% endif %}
+						{% ifequal sin_validar True %}<div class="alert alert-warning" role="alert"><p>Se ha creado registros automáticos para estudiantes y representantes. Por favor, edite estos registros, valide la información y guárdelos.</p></div>{%endifequal%}
+
+						<a href="/socioeconomico/{{pedido.pk}}/integrante/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+					</div>
+				</div>
+			</div>
+
+			<div class = "panel-group panel panel-primary" id="situacion_habitacional">
+
+
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion5"><small class="panel-title"> SECCIÓN SITUACIÓN HABITACIONAL</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.situacion_habitacional %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion5">
+					<div class="panel-body">
+						{% if pedido.situacion_habitacional %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Posesión de Vivienda</th>
+										<th scope="col">Tipo de Vivienda</th>
+										<th scope="col">Estructura de Vivienda</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.situacion_habitacional.posesion_vivienda}}</td>
+									<td>{{pedido.situacion_habitacional.tipo_vivienda}}</td>
+									<td>{{pedido.situacion_habitacional.estructura_vivienda}}</td>
+
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/situacion_habitacional/{{pedido.situacion_habitacional.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/situacion_habitacional/">aquí</a> para registrar el detalle de la situación habitacional familiar.</p>
+						{% endif %}
+						{% if not pedido.situacion_habitacional %}
+						<a href="/socioeconomico/{{pedido.pk}}/situacion_habitacional/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>{%endif%}
+					</div>
+				</div>
+			</div>
+
+			<div class = "panel-group panel panel-primary" id="responsable_educacion">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion6"><small class="panel-title"> SECCIÓN RESPONSABLE DE GASTOS DE EDUCACIÓN</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.responsable_gastos %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion6">
+					<div class="panel-body">
+					{% if pedido.representante_set.all%}
+						{% if pedido.responsable_gastos %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Responsable de Gastos Educativos</th>
+										
+									
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.responsable_gastos.responsable_gastos}}</td>
+
+
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/responsable_gastos/{{pedido.responsable_gastos.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/responsable_gastos/">aquí</a> para registrar el responsable de los gastos educativos familiares.</p>
+						{% endif %}
+
+						{% if not pedido.responsable_gastos %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/responsable_gastos/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+
+						{% endif %}
+					{% else %}
+						<div class="alert alert-warning" role="alert"><p>Ingrese información de representantes para poder llenar esta sección.</p></div>
+					{% endif %}
+					</div>
+				</div>
+			</div>
+
+
+			<div class = "panel-group panel panel-primary" id="propiedades">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion9"><small class="panel-title"> SECCIÓN PROPIEDADES</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.propiedades %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+				<div class="panel panel-collapse collapse" id="accordion9">
+					<div class="panel-body">
+						{% if pedido.propiedades %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Cantidad de Propiedades</th>
+										<th scope="col">Valor Total de Propiedades</th>
+										<th scope="col">Cantidad de Vehículos</th>
+										<th scope="col">Valor Total de Propiedades</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.propiedades.cantidad_inmuebles}}</td>
+									<td>{{pedido.propiedades.valor_inmuebles}}</td>
+									<td>{{pedido.propiedades.cantidad_vehiculos}}</td>
+									<td>{{pedido.propiedades.valor_vehiculos}}</td>
+
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/propiedades/{{pedido.propiedades.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/propiedades/">aquí</a> para registrar el detalle de las propiedades familiares.</p>
+						{% endif %}
+
+						{% if not pedido.propiedades %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/propiedades/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+
+			<div class = "panel-group panel panel-primary" id="ingresos_economicos">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion7"><small class="panel-title"> SECCIÓN INGRESOS ECONÓMICOS</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.ingresos %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion7">
+					<div class="panel-body">
+						{% if pedido.ingresos %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Relación de Dependencia</th>
+										<th scope="col">Negocios</th>
+										<th scope="col">Inversiones</th>
+										<th scope="col">Arriendos</th>
+										<th scope="col">Otros</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.ingresos.dependencias}}</td>
+									<td>{{pedido.ingresos.negocios}}</td>
+									<td>{{pedido.ingresos.inversiones}}</td>
+									<td>{{pedido.ingresos.arriendos}}</td>
+									<td>{{pedido.ingresos.otros_ingreso}}</td>
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/ingresos/{{pedido.ingresos.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/ingresos/">aquí</a> para registrar el detalle de los ingresos familiares.</p>
+						{% endif %}
+
+						{% if not pedido.ingresos %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/ingresos/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+			<div class = "panel-group panel panel-primary" id="gastos_economicos">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion8"><small class="panel-title"> SECCIÓN GASTOS ECONÓMICOS</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.gastos %}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion8">
+					<div class="panel-body">
+						{% if pedido.gastos %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Vivienda</th>
+										<th scope="col">Alimentación</th>
+										<th scope="col">Educación</th>
+										<th scope="col">Transporte</th>
+										<th scope="col">Salud</th>
+										<th scope="col">Vestimenta</th>
+										<th scope="col">Otros Gastos</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>{{pedido.gastos.gastos_vivienda}}</td>
+									<td>{{pedido.gastos.gastos_alimentacion}}</td>
+									<td>{{pedido.gastos.gastos_educacion}}</td>
+									<td>{{pedido.gastos.gastos_transporte}}</td>
+									<td>{{pedido.gastos.gastos_salud}}</td>
+									<td>{{pedido.gastos.gastos_vestimenta}}</td>
+									<td>{{pedido.gastos.gastos_otros}}</td>
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/gastos/{{pedido.gastos.pk}}/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/gastos/">aquí</a> para registrar el detalle de los gastos familiares.</p>
+						{% endif %}
+
+						{% if not pedido.gastos %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/gastos/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+
+						{% endif %}
+					</div>
+				</div>
+			</div>
+            {% ifequal pedido.requerido False %}
+
+			<div class = "panel-group panel panel-primary" id="motivo_pedido">
+
+				<div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <h4 class="panel-title">
+								<a data-toggle = "collapse" data-parent = "#main_accordion" href="#accordion10"><small class="panel-title"> SECCIÓN MOTIVO DE SOLICITUD</small></a>
+							</h4>                                
+						</div>
+                        <div class="col-xs-3 text-right">
+                        	{% if pedido.motivo_solicitud%}<i class="fa fa-check-circle"></i>{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+				<div class="panel panel-collapse collapse" id="accordion10">
+					<div class="panel-body">
+						{% if pedido.motivo_solicitud%}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Capacidad de Pago Mensual</th>
+
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>USD {{pedido.capacidad_pago}}</td>
+
+									<td><span class="pull-left"><a href="/socioeconomico/{{pedido.pk}}/motivo/editar" class="icon-block"> <i class="fa fa-pencil"></i></a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						{% else %}
+							<p>Por favor, de click <a href="/socioeconomico/{{pedido.pk}}/motivo/">aquí</a> para registrar el detalle de los gastos familiares.</p>
+						{% endif %}
+
+						{% if not pedido.motivo_solicitud %}
+
+						<a href="/socioeconomico/{{pedido.pk}}/motivo/"><button type="button" class="btn btn-danger"><i class="fa fa-plus"></i> Añadir</button></a>
+
+						{% endif %}
+					</div>
+				</div>
+				{% endifequal %}
+			</div>
+
+		</div>
+	</div>
+
+		<div class="row"  align= "center">
+			<a class="finish" href="/socioeconomico/{{pedido.pk}}/terminar/"><button type="button" class="btn btn-success" formnovalidate>Finalizar y Enviar <span class="glyphicon glyphicon-new-window"></span></button></a>
+			<a class="exit" href="https://www.montebelloacademy.org"><button type="button" class="btn btn-success" formnovalidate>Salir <span class="glyphicon glyphicon-new-window"></span></button></a>
+		</div>
+
+<div>
+
+		<script type ="text/javascript">
+
+
+
+			$(document).load(function(){
+				$("#id_html_tbl").css("width", "100%");
+
+			});
+
+
+
+			$(document).ready(function(){
+
+
+				//$( "form" ).submit(function( event ) {
+				//  alert( "Handler for .submit() called." );
+				//  event.preventDefault();
+				//});
+
+
+				$("form").submit(function(event){
+
+					var $mensaje = document.forms[0].html.value;
+					var $mensaje = $("#tinymce").value;
+					if($mensaje == ""){
+						alert("El mensaje que está intentando enviar está vacío. Por favor, ingrese el mensaje para proceder con el envío.")
+						event.preventDefault();
+					}
+
+					else {
+
+
+
+						var $conteo = (document.querySelectorAll('input[id*="stud_"]:check-circleed').length);
+						if($conteo == 0){
+							alert('Seleccione al  menos un estudiante para poder enviar los correos correspondientes.')
+							event.preventDefault();
+						}
+
+						else if($conteo == 1){
+							return confirm('Se enviará el mensaje a ' + $conteo + ' estudiante.');
+						}
+						else {
+							return confirm('Se enviará el mensaje a ' + $conteo + ' estudiantes.');
+						}
+					}
+					
+					//alert(document.querySelectorAll('input[id*="stud_"]:check-circleed').length);
+					//alert(document.querySelectorAll('input[type="check-circlebox"]:check-circleed').length);
+
+				});
+
+
+	
+			});
+
+
+		</script>
+
+		<script >
+		    $('.confirmation').on('click', function () {
+		        return confirm('Está a punto de eliminar el registro. ¿Desea continuar?');
+		    });
+		    $('.exit').on('click', function () {
+		        return confirm('Está a punto de salir del sistema. La información que ha ingresado, ha sido guardada. Puede reingresar más tarde a este formulario mediante el enlace enviado a su correo.');
+		    });
+
+		</script>
+    	{% if errores %}
+		<script>
+		    $('.finish').on('click', function (e) {
+
+		        return alert('Existe información que todavía no está ingresada. Por favor, complete toda la información para poder finalizar la solicitud.');		        
+		    });
+		</script>		
+		{% endif%}
+
+    	{% if not errores %}
+		<script>
+		    $('.finish').on('click', function () {
+		    	return confirm('Está a punto de finalizar y enviar este formulario. Una vez hecho esto, usted no podrá editar la información ingresada, por favor confirme los datos');
+		    	
+		    });
+		</script>
+		{% endif %}
+	</body>
+
+
+</html>

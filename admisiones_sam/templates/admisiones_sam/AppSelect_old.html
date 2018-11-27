@@ -1,0 +1,286 @@
+{% extends "gentelella/production/plain_page.html" %}
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+ {% block cabecera %}  
+    
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+
+  {% endblock%}  
+
+ 
+   </head> 
+
+
+ <body>
+ {%block contenido %}
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Consultar Solicitud de Admisión</h>
+            </div>
+        </div>
+        <form class="well form-horizontal col-md-12" action="/admisiones/ConsultarSolicitud/{{aplicacion.id_applications}}/"  id="contact_form">
+        {% csrf_token %}
+            <div class="container">
+                <div class "col-md-12">
+
+                    {% if form.non_field_errors %}
+                        <fieldset>
+                        <legend class="panel-heading">
+                            <strong data-bv-validator="notEmpty" class="help-block" style="color:red">Ya existe una aplicación con estos datos</strong>
+                        </legend>
+                        </fieldset>
+                    {% endif %}
+                </div>
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <!-- Form Name -->
+                        <div class="panel-heading">APLICANTE</div>
+                        <div class="panel-body">
+                    
+                        {{form.errors.type_student}}
+                        {{form.errors.date_application}}
+                    
+                            <!-- Text input-->
+                            <div class="form-group">
+                             <p>
+                              </br>
+                             </p>
+                             </div>
+                           
+                           <div class="form-group">
+                           
+                                <label class="col-md-3 control-label">Nombres:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_name_student" name="{{form.name_student.html_name}}" value="{{form.name_student.value}}" >
+
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Apellidos:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                
+                                <input class="form-control"   type="text" disabled="disabled" id="id_name_student" name="{{form.surname_student.html_name}}" value="{{form.surname_student.value}}" >
+                              
+                                </div>
+                            </div>
+                            
+                             <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Genero:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_gender_student" name="{{form.gender_student.html_name}}" value="{{form.gender_student.value}}" >
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Fecha Nacimiento:</label>  
+                                <div class="col-md-9 inputGroupContainer date">
+                                <div class="input-group input-append date">
+                                    <input class="form-control"   type="text" disabled id="id_birth_date" name="{{form.birth_date.html_name}}" value="{{form.birth_date.value}}" >
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">País Nacimiento:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_birth_country" name="{{form.birth_country.html_name}}" value="{{form.birth_country.value}}" >
+                               
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">País Residencia:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                 <input class="form-control"   type="text" disabled id="id_country_home" name="{{form.country_home.html_name}}" value="{{form.country_home.value}}" >
+                                </div>
+                            </div>
+                            
+                            <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Grado al que Aplica:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                  <input class="form-control"   type="text" disabled id="id_applied_grade" name="{{form.applied_grade.html_name}}" value="{{form.applied_grade.value}}" >
+                                 </div>
+                            </div>
+                            
+                             <!-- Select input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Período Lectivo:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_school_period" name="{{form.school_period.html_name}}" value="{{form.school_period.value}}" >
+                                
+                                </div>
+                            </div>
+                            <div class="form-group">
+                             <p>
+                              </br>
+                             </p>
+                             </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">REPRESENTANTE</div>
+                            <div class="panel-body">
+                                 
+                                 <!-- Text input-->
+                                 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Nombres:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                    <div class="input-group">
+                                    <input class="form-control"   type="text" disabled id="id_name_tutor" name="{{form.name_tutor.html_name}}" value="{{form.name_tutor.value}}" >
+                                        
+                                    </div>
+                                </div>
+                            
+                                                
+                            
+                            
+                                <!-- Text input-->
+                                 <div class="form-group">
+                                    <label class="col-md-3 control-label">Apellidos:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                    <div class="input-group">
+                                    <input class="form-control"   type="text" disabled id="id_surname_tutor" name="{{form.surname_tutor.html_name}}" value="{{form.surname_tutor.value}}" >
+                                        
+                                    </div>
+                                </div>
+            
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-3 control-label">Correo Electrónico:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                    <div class="input-group">
+                                    <input class="form-control"   type="text" disabled id="id_mail_tutor" name="{{form.mail_tutor.html_name}}" value="{{form.mail_tutor.value}}" >
+                                       
+                                  </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-3 control-label">Teléfono Fijo:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                    <div class="input-group">
+                                    <input class="form-control"   type="text" disabled id="id_phone_tutor" name="{{form.phone_tutor.html_name}}" value="{{form.phone_tutor.value}}" >
+                                        
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-3 control-label">Teléfono Móvil:</label>  
+                                    <div class="col-md-9 inputGroupContainer">
+                                    <div class="input-group">
+                                    <input class="form-control"   type="text" disabled id="id_cell_tutor" name="{{form.cell_tutor.html_name}}" value="{{form.cell_tutor.value}}" >
+                                        
+                                    </div>
+                                </div>
+            
+                            </div>
+                    </fieldset>
+                </div>
+
+                <div class = "col-md-6" "col-sm-6" "col-xs-6">
+                    <fieldset class="panel panel-primary">
+                        <div class="panel-heading">INSTITUCIÓN EDUCATIVA PREVIA</div>
+                        <div class="panel-body">
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Nombre:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_name_school" name="{{form.name_school.html_name}}" value="{{form.name_school.value}}" >
+                                    
+                              </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                              <label class="col-md-3 control-label">Lugar:</label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_address_school" name="{{form.address_school.html_name}}" value="{{form.address_school.value}}" >
+                                    
+                                </div>
+                            </div>
+                            
+                             <!-- Text input-->
+                             <div class="form-group">
+                              <label class="col-md-3 control-label">Último Año Lectivo / Año en Curso: </label>  
+                                <div class="col-md-9 inputGroupContainer">
+                                <div class="input-group">
+                                <input class="form-control"   type="text" disabled id="id_last_year" name="{{form.last_year.html_name}}" value="{{form.last_year.value}}" >
+                                   
+                              </div>
+                            </div>
+
+                            
+                        </div>
+
+                        <!-- Success message -->
+                       <!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>-->
+                    </fieldset>
+                  
+                   
+                </div>
+                
+                    <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-5 control-label"></label>
+                            <!--<button type="submit" class="btn btn-warning" formaction= "/admisiones/AprobarContabilidad/" style="margin-top: 10px" >Regresar <span class="glyphicon glyphicon-new-window"></span> </button>-->
+                            <a href="/admisiones/AprobarContabilidad/" class="btn btn-warning" style="margin-top: 10px" >Regresar <span class="glyphicon glyphicon-new-window"></span></a>
+                        </div>
+            </div>
+        </form>
+    </div><!-- /.container -->
+ {% block scripts %}
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+  {% endblock %}
+   {% endblock %}
+   
+    
+</body>
+</html>

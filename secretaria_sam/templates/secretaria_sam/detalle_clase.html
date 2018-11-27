@@ -1,0 +1,109 @@
+{% extends "gentelella/production/plain_page.html" %}
+{% load staticfiles %}
+{% load extras %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+ {% block cabecera %}  
+    
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+
+  {% endblock%}  
+
+ 
+   </head> 
+
+ {%block contenido %}
+
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h1>
+                <h3>{{clase.nivel}} {{clase.paralelo}}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div>
+            <h3>Información de la clase</h3>
+            <p>Año Lectivo: {{clase.periodo_lectivo}}</p>
+            <p>Dirigente: {{clase.homeroom_registry_set.first.homeroom}}</p>
+            <p>Número de estudiantes: {{estudiantes|length}}</p>
+            </div>    
+
+
+
+        </div>
+        <div class="col-md-6">
+
+                {% if estudiantes %}
+                    <ul class="list-group">
+                        <li class = "list-group-item active">Lista de Estudiante</li>
+                        {% for x in estudiantes %}
+                        <li class="list-group-item"><a href="/secretaria/estudiantes/{{x.estudiante.pk}}">{{x.estudiante.id_students.father_last_name}} {{x.estudiante.id_students.mother_last_name}} {{x.estudiante.id_students.first_name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %} 
+                    <p>No existen estudiantes matriculados en esta clase</p>
+                {% endif %}
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+ {% block scripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/modernizr.js' %}" type="text/javascript"></script>
+    <script src="{% static 'contact-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+
+
+
+
+
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+    
+
+  {% endblock %}
+
+   
+    
+</body>
+</html>

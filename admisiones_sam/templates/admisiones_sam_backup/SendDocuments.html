@@ -1,0 +1,178 @@
+{% extends "gentelella/production/plain_page.html" %}
+
+{% load staticfiles %}
+{% load extras %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+   {% block cabecera %}
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/datepicker3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/sb-admin-2.css' %}">
+    <link rel="stylesheet" href="{% static 'contact-form/css/style.css' %}" type="text/css">
+    <link href="{% static 'contact-form/css/ventana.css' %}" rel="stylesheet" type="text/css">
+
+   {% endblock%}  
+
+  </head> 
+
+
+ <body>
+{%block contenido %}
+
+<table>
+<tr>
+
+{% for x in detalle %}
+<td>
+<div id="{{x.pk}}_myModal" class="modal">
+<span class="close" id = "close_{{x.pk}}" onclick="document.getElementById('{{x.pk}}_myModal').style.display='none'">&times;</span>
+<img class="modal-content" id="img01" src="/uploads/{{x.file}}">
+
+<div id="caption"></div>
+</div>
+</td>
+{% endfor %}
+</tr>
+</table>
+
+
+    <div class="container_fluid">
+        <div class="container page-header">
+            <div class="col-md-4">
+                <img src="{% static 'logo.png' %}" width="120" height="120">
+            </div>
+            <div class="col-md-8" "col-sm-8" "col-xs-8" align="right">
+                <h1>Montebello Academy</h>
+                <h3>Nueva Petición de Carga de Documentos</h>
+            </div>
+        </div>
+        <div class="well col-md-12">
+            <div class="container">
+                <form class="form-horizontal col-md-12" action="/admisiones/EnviaDocumentos/"  >
+                  
+                      
+                    <div class = "col-md-12" "col-sm-12" "col-xs-12">
+                        <fieldset class="panel panel-primary">
+                            
+                            <div class="panel-heading">ENVIAR A VALIDAR DOCUMENTOS</div>
+                            <div class="panel-body">
+                            
+                               {% if documentos %}
+                                    <div class="table-responsive">
+                                     <div style="height:150px;overflow:auto;">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                   
+                                                    <th>Enviar a Validar</th>
+                                                    <th>Consultar Documentos</th>
+                                                    <th>Apellidos / Nombres</th>
+                                                    <th>Grado / Nivel</th>
+                                                    
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for x in documentos %}
+                                                    <tr>
+                                                        <td><span class="pull-left"><a href="/admisiones/MailCorrigeDocumentos/{{x.id_applications}}/" class="icon-block"><i class="fa fa-send-o"></i></a></span></td>
+                                                        <td><span class="pull-left"><a href="/admisiones/ValidaDocumentos/?q_aplicantes={{ x.surname_student|SplitNombres }}+{{ x.name_student|SplitNombres }}&submit=/" class="icon-block"><i class="fa fa-search"></i></a></span></td>
+                                                        <td>{{x.surname_student}} {{x.name_student}} </td>
+                                                        <td>{{x.grade}}</td>
+                                                        
+                                                        
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    No se han registrado Aplicantes con documentos no validados.
+                                {% endif %} 
+                               
+                            </div>
+                        </fieldset>
+                    </div>
+                     <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-5 control-label"></label>
+                          <div class="col-md-5">
+                            <a href="/admisiones/Inicio/" class="btn btn-warning" style="margin-top: 10px" >Regresar <span class="glyphicon glyphicon-stop"></span></a>
+                          </div>
+                        </div>
+                </form>   
+            </div>
+        
+               
+
+        </div>   
+    
+    </div>
+        
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script src="{% static 'contact-form/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrapvalidator.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/bootstrap-datepicker.min.js'%}"></script>
+    <script src="{% static 'contact-form/js/index.js'%}"></script>
+     <!--<script src="{% static 'contact-form/js/ventana.js' %}" type="text/javascript"></script>-->
+     
+    <script>
+      $(function() {
+        $("#id_q_aplicantes").autocomplete({
+          source: "/admisiones/ListaAplicantes/",
+          minLength: 2,
+        });
+      });
+    </script>
+    
+    {% for x in detalle %}
+    <script>
+    // Get the modal
+    var modal_{{x.pk}} = document.getElementById('{{x.pk}}_myModal');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    //var img = document.getElementsByClassName("ojo")[0];
+    var img = document.getElementById('{{x.pk}}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+        modal_{{x.pk}}.style.display = "block";
+        //modalImg.src = this.src;
+        //captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span_{{x.pk}} = document.getElementsById("close_{{x.pk}}");
+
+    // When the user clicks on <span> (x), close the modal
+    span_{{x.pk}}.onclick = function() { 
+      modal_{{x.pk}}.style.display = "none";
+    }
+    </script>
+    {% endfor %}
+    
+{% endblock %}
+   
+    
+</body>
+</html>
